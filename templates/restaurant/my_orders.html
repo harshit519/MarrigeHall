@@ -1,0 +1,865 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Orders - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">My Orders</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Track Your Restaurant Orders and Delivery Status
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Order Stats Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>12</h3>
+                        <p>Total Orders</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>2</h3>
+                        <p>In Transit</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>8</h3>
+                        <p>Delivered</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>₹8,500</h3>
+                        <p>Total Spent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Order Filters Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="order-filters text-center mb-4" data-aos="fade-up">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary active" data-filter="all">All Orders</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="pending">Pending</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="preparing">Preparing</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="delivered">Delivered</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="cancelled">Cancelled</button>
+            </div>
+        </div>
+        
+        <!-- Orders List -->
+        <div class="orders-list" id="ordersList">
+            <!-- Pending Order -->
+            <div class="order-item" data-status="pending" data-aos="fade-up" data-aos-delay="100">
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-status pending">
+                            <i class="fas fa-clock"></i>
+                            <span>Pending</span>
+                        </div>
+                        <div class="order-number">
+                            <strong>Order #12345</strong>
+                            <small class="text-muted">Placed 2 hours ago</small>
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn btn-outline-primary btn-sm" onclick="viewOrderDetails(1)">
+                                <i class="fas fa-eye me-1"></i>View Details
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" onclick="cancelOrder(1)">
+                                <i class="fas fa-times me-1"></i>Cancel
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="order-content">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="order-items">
+                                    <div class="order-item-detail">
+                                        <img src="{% static 'images/menu/butter-chicken.jpg' %}" alt="Butter Chicken" class="item-image">
+                                        <div class="item-info">
+                                            <h6>Butter Chicken</h6>
+                                            <p class="text-muted">Quantity: 2</p>
+                                            <span class="item-price">₹450</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-detail">
+                                        <img src="{% static 'images/menu/naan.jpg' %}" alt="Naan" class="item-image">
+                                        <div class="item-info">
+                                            <h6>Butter Naan</h6>
+                                            <p class="text-muted">Quantity: 4</p>
+                                            <span class="item-price">₹200</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-detail">
+                                        <img src="{% static 'images/menu/biryani.jpg' %}" alt="Biryani" class="item-image">
+                                        <div class="item-info">
+                                            <h6>Chicken Biryani</h6>
+                                            <p class="text-muted">Quantity: 1</p>
+                                            <span class="item-price">₹350</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="order-summary">
+                                    <h6>Order Summary</h6>
+                                    <div class="summary-item">
+                                        <span>Subtotal:</span>
+                                        <span>₹1,000</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Delivery Fee:</span>
+                                        <span>₹50</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Tax:</span>
+                                        <span>₹90</span>
+                                    </div>
+                                    <hr>
+                                    <div class="summary-item total">
+                                        <span>Total:</span>
+                                        <span>₹1,140</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-timeline">
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Order Placed</span>
+                            </div>
+                            <div class="timeline-item active">
+                                <i class="fas fa-clock"></i>
+                                <span>Confirmed</span>
+                            </div>
+                            <div class="timeline-item">
+                                <i class="fas fa-circle"></i>
+                                <span>Preparing</span>
+                            </div>
+                            <div class="timeline-item">
+                                <i class="fas fa-circle"></i>
+                                <span>On the Way</span>
+                            </div>
+                            <div class="timeline-item">
+                                <i class="fas fa-circle"></i>
+                                <span>Delivered</span>
+                            </div>
+                        </div>
+                        <div class="estimated-delivery">
+                            <i class="fas fa-clock"></i>
+                            <span>Estimated Delivery: 45-60 minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Preparing Order -->
+            <div class="order-item" data-status="preparing" data-aos="fade-up" data-aos-delay="200">
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-status preparing">
+                            <i class="fas fa-utensils"></i>
+                            <span>Preparing</span>
+                        </div>
+                        <div class="order-number">
+                            <strong>Order #12344</strong>
+                            <small class="text-muted">Placed 1 hour ago</small>
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn btn-outline-primary btn-sm" onclick="viewOrderDetails(2)">
+                                <i class="fas fa-eye me-1"></i>View Details
+                            </button>
+                            <button class="btn btn-outline-info btn-sm" onclick="trackOrder(2)">
+                                <i class="fas fa-map-marker-alt me-1"></i>Track
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="order-content">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="order-items">
+                                    <div class="order-item-detail">
+                                        <img src="{% static 'images/menu/pizza.jpg' %}" alt="Pizza" class="item-image">
+                                        <div class="item-info">
+                                            <h6>Margherita Pizza</h6>
+                                            <p class="text-muted">Quantity: 1</p>
+                                            <span class="item-price">₹600</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-detail">
+                                        <img src="{% static 'images/menu/pasta.jpg' %}" alt="Pasta" class="item-image">
+                                        <div class="item-info">
+                                            <h6>Pasta Carbonara</h6>
+                                            <p class="text-muted">Quantity: 1</p>
+                                            <span class="item-price">₹400</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="order-summary">
+                                    <h6>Order Summary</h6>
+                                    <div class="summary-item">
+                                        <span>Subtotal:</span>
+                                        <span>₹1,000</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Delivery Fee:</span>
+                                        <span>₹50</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Tax:</span>
+                                        <span>₹90</span>
+                                    </div>
+                                    <hr>
+                                    <div class="summary-item total">
+                                        <span>Total:</span>
+                                        <span>₹1,140</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-timeline">
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Order Placed</span>
+                            </div>
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Confirmed</span>
+                            </div>
+                            <div class="timeline-item active">
+                                <i class="fas fa-utensils"></i>
+                                <span>Preparing</span>
+                            </div>
+                            <div class="timeline-item">
+                                <i class="fas fa-circle"></i>
+                                <span>On the Way</span>
+                            </div>
+                            <div class="timeline-item">
+                                <i class="fas fa-circle"></i>
+                                <span>Delivered</span>
+                            </div>
+                        </div>
+                        <div class="estimated-delivery">
+                            <i class="fas fa-clock"></i>
+                            <span>Estimated Delivery: 20-30 minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delivered Order -->
+            <div class="order-item" data-status="delivered" data-aos="fade-up" data-aos-delay="300">
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-status delivered">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Delivered</span>
+                        </div>
+                        <div class="order-number">
+                            <strong>Order #12343</strong>
+                            <small class="text-muted">Delivered yesterday</small>
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn btn-outline-primary btn-sm" onclick="viewOrderDetails(3)">
+                                <i class="fas fa-eye me-1"></i>View Details
+                            </button>
+                            <button class="btn btn-outline-success btn-sm" onclick="reorder(3)">
+                                <i class="fas fa-redo me-1"></i>Reorder
+                            </button>
+                            <button class="btn btn-outline-warning btn-sm" onclick="addReview(3)">
+                                <i class="fas fa-star me-1"></i>Review
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="order-content">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="order-items">
+                                    <div class="order-item-detail">
+                                        <img src="{% static 'images/menu/burger.jpg' %}" alt="Burger" class="item-image">
+                                        <div class="item-info">
+                                            <h6>Chicken Burger</h6>
+                                            <p class="text-muted">Quantity: 2</p>
+                                            <span class="item-price">₹400</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-detail">
+                                        <img src="{% static 'images/menu/fries.jpg' %}" alt="Fries" class="item-image">
+                                        <div class="item-info">
+                                            <h6>French Fries</h6>
+                                            <p class="text-muted">Quantity: 1</p>
+                                            <span class="item-price">₹150</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="order-summary">
+                                    <h6>Order Summary</h6>
+                                    <div class="summary-item">
+                                        <span>Subtotal:</span>
+                                        <span>₹550</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Delivery Fee:</span>
+                                        <span>₹50</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Tax:</span>
+                                        <span>₹50</span>
+                                    </div>
+                                    <hr>
+                                    <div class="summary-item total">
+                                        <span>Total:</span>
+                                        <span>₹650</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-timeline">
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Order Placed</span>
+                            </div>
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Confirmed</span>
+                            </div>
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Preparing</span>
+                            </div>
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>On the Way</span>
+                            </div>
+                            <div class="timeline-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Delivered</span>
+                            </div>
+                        </div>
+                        <div class="delivery-info">
+                            <i class="fas fa-check-circle text-success"></i>
+                            <span>Delivered on time by Rahul</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Actions Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Quick Actions</h2>
+            <p>What would you like to do next?</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h5>Order Food</h5>
+                    <p>Explore our delicious menu and place a new order</p>
+                    <a href="{% url 'restaurant:menu' %}" class="btn btn-primary">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h5>Contact Support</h5>
+                    <p>Need help with your order?</p>
+                    <a href="{% url 'core:contact' %}" class="btn btn-primary">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h5>Download Receipt</h5>
+                    <p>Get your order receipts and invoices</p>
+                    <a href="#" class="btn btn-primary">
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Stat Card Styles */
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-right: 1.5rem;
+}
+
+.stat-content h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.stat-content p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+/* Order Filter Styles */
+.order-filters .btn-group .btn {
+    border-radius: 25px;
+    margin: 0 0.25rem;
+    transition: var(--transition);
+}
+
+.order-filters .btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Order Card Styles */
+.order-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.order-header {
+    background: var(--primary-color);
+    color: var(--dark-color);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.order-status.pending {
+    color: #ffc107;
+}
+
+.order-status.preparing {
+    color: #17a2b8;
+}
+
+.order-status.delivered {
+    color: #28a745;
+}
+
+.order-status.cancelled {
+    color: #dc3545;
+}
+
+.order-status i {
+    margin-right: 0.5rem;
+}
+
+.order-number {
+    text-align: center;
+}
+
+.order-number strong {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.order-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.order-content {
+    padding: 2rem;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.order-item-detail {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 1rem;
+}
+
+.item-info h6 {
+    margin-bottom: 0.25rem;
+    color: var(--dark-color);
+}
+
+.item-info p {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.item-price {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.order-summary {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.order-summary h6 {
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.summary-item.total {
+    font-weight: bold;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+}
+
+.order-footer {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.order-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background: #e9ecef;
+    z-index: 1;
+}
+
+.timeline-item.completed:not(:last-child)::after {
+    background: var(--success-color);
+}
+
+.timeline-item.active:not(:last-child)::after {
+    background: var(--primary-color);
+}
+
+.timeline-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    z-index: 2;
+    position: relative;
+    background: white;
+    padding: 0.25rem;
+}
+
+.timeline-item.completed i {
+    color: var(--success-color);
+}
+
+.timeline-item.active i {
+    color: var(--primary-color);
+}
+
+.timeline-item span {
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+.estimated-delivery,
+.delivery-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.estimated-delivery i,
+.delivery-info i {
+    margin-right: 0.5rem;
+}
+
+/* Action Card Styles */
+.action-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.action-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.action-card p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .order-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .order-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .order-timeline {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .timeline-item:not(:last-child)::after {
+        display: none;
+    }
+    
+    .order-filters .btn-group {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .order-filters .btn {
+        margin: 0;
+    }
+    
+    .order-item-detail {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .item-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Order Filter
+    $('.order-filters .btn').click(function() {
+        $('.order-filters .btn').removeClass('active');
+        $(this).addClass('active');
+        
+        const filter = $(this).data('filter');
+        
+        if (filter === 'all') {
+            $('.order-item').show();
+        } else {
+            $('.order-item').hide();
+            $('.order-item[data-status="' + filter + '"]').show();
+        }
+    });
+});
+
+function viewOrderDetails(orderId) {
+    // Redirect to order detail page
+    window.location.href = `/restaurant/orders/${orderId}/`;
+}
+
+function cancelOrder(orderId) {
+    if (confirm('Are you sure you want to cancel this order? This action cannot be undone.')) {
+        // Show loading state
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Cancelling...';
+        button.disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
+            showNotification('Order cancelled successfully', 'success');
+            // Refresh the page or update the UI
+            location.reload();
+        }, 2000);
+    }
+}
+
+function trackOrder(orderId) {
+    // Show tracking modal or redirect to tracking page
+    alert('Order tracking functionality will be implemented here.');
+}
+
+function reorder(orderId) {
+    // Add items from previous order to cart
+    showNotification('Items added to cart for reorder', 'success');
+    // Redirect to cart or menu
+    setTimeout(() => {
+        window.location.href = "{% url 'restaurant:menu' %}";
+    }, 1500);
+}
+
+function addReview(orderId) {
+    // Show review modal or redirect to review page
+    alert('Review functionality will be implemented here.');
+}
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}

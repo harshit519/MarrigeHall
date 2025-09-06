@@ -1,0 +1,497 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register - Royal Palace{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="auth-card">
+                    <div class="auth-header text-center">
+                        <div class="auth-logo">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h2>Join Royal Palace</h2>
+                        <p>Create your account and start planning your perfect event</p>
+                    </div>
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <form method="post" class="auth-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="first_name" class="form-label">First Name *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="last_name" class="form-label">Last Name *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="username" class="form-label">Username *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-at"></i>
+                                </span>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="phone" class="form-label">Phone Number *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="password1" class="form-label">Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password1" name="password1" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword1">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="password2" class="form-label">Confirm Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password2" name="password2" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword2">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                                <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                            <label class="form-check-label" for="terms">
+                                I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                            </label>
+                        </div>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                            <label class="form-check-label" for="newsletter">
+                                Subscribe to our newsletter for updates and special offers
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block w-100 mb-3">
+                            <i class="fas fa-user-plus me-2"></i>Create Account
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="btn btn-outline-primary btn-block w-100 mb-2">
+                            <i class="fab fa-google me-2"></i>Sign up with Google
+                        </button>
+                        <button class="btn btn-outline-primary btn-block w-100">
+                            <i class="fab fa-facebook me-2"></i>Sign up with Facebook
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer text-center">
+                        <p>Already have an account? <a href="{% url 'accounts:login' %}" class="text-decoration-none">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.auth-container {
+    min-height: 100vh;
+    background: var(--royal-gradient);
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--royal-gradient);
+}
+
+.auth-header {
+    margin-bottom: 2rem;
+}
+
+.auth-logo {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.auth-header h2 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.auth-form .form-label {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.auth-form .form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    transition: var(--transition);
+}
+
+.auth-form .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.auth-form textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.auth-form .input-group-text {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-right: none;
+    color: var(--text-color);
+}
+
+.auth-form .input-group .form-control {
+    border-left: none;
+}
+
+.auth-form .input-group .form-control:focus + .input-group-text {
+    border-color: var(--primary-color);
+}
+
+.auth-form .btn {
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.auth-form .btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+.auth-form .btn-primary:hover {
+    background: #e0a800;
+    border-color: #e0a800;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3);
+}
+
+.auth-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e9ecef;
+}
+
+.auth-divider span {
+    background: white;
+    padding: 0 1rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.social-login .btn {
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.social-login .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.auth-footer {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    color: #e0a800;
+}
+
+/* Animation for form elements */
+.auth-form .form-group {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.auth-form .form-group:nth-child(1) { animation-delay: 0.1s; }
+.auth-form .form-group:nth-child(2) { animation-delay: 0.2s; }
+.auth-form .form-group:nth-child(3) { animation-delay: 0.3s; }
+.auth-form .form-group:nth-child(4) { animation-delay: 0.4s; }
+.auth-form .form-group:nth-child(5) { animation-delay: 0.5s; }
+.auth-form .form-group:nth-child(6) { animation-delay: 0.6s; }
+.auth-form .form-group:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Password strength indicator */
+.password-strength {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    transition: var(--transition);
+}
+
+.password-strength.weak { background: #dc3545; }
+.password-strength.medium { background: #ffc107; }
+.password-strength.strong { background: #28a745; }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .auth-logo {
+        font-size: 2.5rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Password toggle functions
+    $('#togglePassword1, #togglePassword2').click(function() {
+        const passwordField = $(this).siblings('input');
+        const icon = $(this).find('i');
+        
+        if (passwordField.attr('type') === 'password') {
+            passwordField.attr('type', 'text');
+            icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            passwordField.attr('type', 'password');
+            icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+    
+    // Password strength checker
+    $('#password1').on('input', function() {
+        const password = $(this).val();
+        let strength = 0;
+        
+        if (password.length >= 8) strength++;
+        if (password.match(/[a-z]/)) strength++;
+        if (password.match(/[A-Z]/)) strength++;
+        if (password.match(/[0-9]/)) strength++;
+        if (password.match(/[^a-zA-Z0-9]/)) strength++;
+        
+        // Remove existing strength indicator
+        $(this).parent().siblings('.password-strength').remove();
+        
+        if (password.length > 0) {
+            let strengthClass = 'weak';
+            if (strength >= 4) strengthClass = 'strong';
+            else if (strength >= 2) strengthClass = 'medium';
+            
+            $(this).parent().after(`<div class="password-strength ${strengthClass}"></div>`);
+        }
+    });
+    
+    // Password confirmation checker
+    $('#password2').on('input', function() {
+        const password1 = $('#password1').val();
+        const password2 = $(this).val();
+        
+        if (password2.length > 0) {
+            if (password1 === password2) {
+                $(this).removeClass('is-invalid').addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid').addClass('is-invalid');
+            }
+        } else {
+            $(this).removeClass('is-valid is-invalid');
+        }
+    });
+    
+    // Form validation
+    $('.auth-form').submit(function(e) {
+        const requiredFields = ['first_name', 'last_name', 'username', 'email', 'phone', 'password1', 'password2'];
+        let isValid = true;
+        
+        // Check required fields
+        requiredFields.forEach(field => {
+            const value = $(`#${field}`).val();
+            if (!value) {
+                $(`#${field}`).addClass('is-invalid');
+                isValid = false;
+            } else {
+                $(`#${field}`).removeClass('is-invalid');
+            }
+        });
+        
+        // Check password match
+        const password1 = $('#password1').val();
+        const password2 = $('#password2').val();
+        if (password1 !== password2) {
+            $('#password2').addClass('is-invalid');
+            isValid = false;
+        }
+        
+        // Check terms agreement
+        if (!$('#terms').is(':checked')) {
+            alert('Please agree to the Terms of Service and Privacy Policy');
+            isValid = false;
+        }
+        
+        if (!isValid) {
+            e.preventDefault();
+            alert('Please fill in all required fields correctly');
+            return false;
+        }
+        
+        // Show loading state
+        const submitBtn = $(this).find('button[type="submit"]');
+        const originalText = submitBtn.html();
+        submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Creating Account...');
+        submitBtn.prop('disabled', true);
+        
+        // Re-enable after a delay (in case of validation errors)
+        setTimeout(() => {
+            submitBtn.html(originalText);
+            submitBtn.prop('disabled', false);
+        }, 5000);
+    });
+    
+    // Social signup buttons
+    $('.social-login .btn').click(function() {
+        const provider = $(this).text().includes('Google') ? 'Google' : 'Facebook';
+        alert(`${provider} signup will be implemented here.`);
+    });
+    
+    // Phone number formatting
+    $('#phone').on('input', function() {
+        let value = $(this).val().replace(/\D/g, '');
+        if (value.length > 0) {
+            value = value.match(/(\d{0,2})(\d{0,4})(\d{0,4})/);
+            $(this).val(value[1] + (value[2] ? ' ' + value[2] : '') + (value[3] ? ' ' + value[3] : ''));
+        }
+    });
+});
+</script>
+{% endblock %}

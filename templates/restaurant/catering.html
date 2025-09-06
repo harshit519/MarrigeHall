@@ -1,0 +1,612 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Catering Services - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Catering Services</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Exquisite Catering for Your Special Events
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Catering Packages Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Catering Packages</h2>
+            <p>Choose the perfect catering package for your event</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="catering-package-card">
+                    <div class="package-header">
+                        <h4>Basic Package</h4>
+                        <div class="package-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">500</span>
+                            <span class="period">/person</span>
+                        </div>
+                    </div>
+                    <div class="package-content">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 3 Course Meal</li>
+                            <li><i class="fas fa-check"></i> Soft Drinks</li>
+                            <li><i class="fas fa-check"></i> Basic Service</li>
+                            <li><i class="fas fa-check"></i> Standard Setup</li>
+                        </ul>
+                        <div class="package-details">
+                            <p><strong>Minimum:</strong> 50 guests</p>
+                            <p><strong>Service Time:</strong> 4 hours</p>
+                        </div>
+                        <a href="#catering-form" class="btn btn-outline-primary w-100">Book This Package</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="catering-package-card featured">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-header">
+                        <h4>Premium Package</h4>
+                        <div class="package-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">800</span>
+                            <span class="period">/person</span>
+                        </div>
+                    </div>
+                    <div class="package-content">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 5 Course Meal</li>
+                            <li><i class="fas fa-check"></i> Soft Drinks & Mocktails</li>
+                            <li><i class="fas fa-check"></i> Professional Service</li>
+                            <li><i class="fas fa-check"></i> Premium Setup</li>
+                            <li><i class="fas fa-check"></i> Dessert Station</li>
+                        </ul>
+                        <div class="package-details">
+                            <p><strong>Minimum:</strong> 100 guests</p>
+                            <p><strong>Service Time:</strong> 6 hours</p>
+                        </div>
+                        <a href="#catering-form" class="btn btn-primary w-100">Book This Package</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="catering-package-card">
+                    <div class="package-header">
+                        <h4>Luxury Package</h4>
+                        <div class="package-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">1,200</span>
+                            <span class="period">/person</span>
+                        </div>
+                    </div>
+                    <div class="package-content">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 7 Course Meal</li>
+                            <li><i class="fas fa-check"></i> Premium Beverages</li>
+                            <li><i class="fas fa-check"></i> Butler Service</li>
+                            <li><i class="fas fa-check"></i> Luxury Setup</li>
+                            <li><i class="fas fa-check"></i> Live Cooking Stations</li>
+                            <li><i class="fas fa-check"></i> Custom Menu Design</li>
+                        </ul>
+                        <div class="package-details">
+                            <p><strong>Minimum:</strong> 150 guests</p>
+                            <p><strong>Service Time:</strong> 8 hours</p>
+                        </div>
+                        <a href="#catering-form" class="btn btn-outline-primary w-100">Book This Package</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Catering Form Section -->
+<section class="section" id="catering-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="catering-form-card" data-aos="fade-up">
+                    <div class="form-header">
+                        <h3>Catering Booking Form</h3>
+                        <p>Fill in the details to book our catering services</p>
+                    </div>
+                    
+                    <form class="catering-form" method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Event Details -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-calendar me-2"></i>Event Details</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_type" class="form-label">Event Type *</label>
+                                    <select class="form-select" id="event_type" name="event_type" required>
+                                        <option value="">Select Event Type</option>
+                                        <option value="wedding">Wedding</option>
+                                        <option value="reception">Wedding Reception</option>
+                                        <option value="birthday">Birthday Party</option>
+                                        <option value="corporate">Corporate Event</option>
+                                        <option value="anniversary">Anniversary</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_date" class="form-label">Event Date *</label>
+                                    <input type="date" class="form-control" id="event_date" name="event_date" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_time" class="form-label">Event Time *</label>
+                                    <input type="time" class="form-control" id="event_time" name="event_time" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="guest_count" class="form-label">Number of Guests *</label>
+                                    <input type="number" class="form-control" id="guest_count" name="guest_count" min="50" max="1000" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Package Selection -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-gift me-2"></i>Package Selection</h5>
+                            <div class="package-options">
+                                <div class="package-option">
+                                    <input type="radio" id="basic_catering" name="catering_package" value="basic" class="package-radio">
+                                    <label for="basic_catering" class="package-label">
+                                        <div class="package-header">
+                                            <h6>Basic Package</h6>
+                                            <span class="package-price">₹500/person</span>
+                                        </div>
+                                        <ul class="package-features">
+                                            <li>3 Course Meal</li>
+                                            <li>Soft Drinks</li>
+                                            <li>Basic Service</li>
+                                        </ul>
+                                    </label>
+                                </div>
+                                
+                                <div class="package-option">
+                                    <input type="radio" id="premium_catering" name="catering_package" value="premium" class="package-radio">
+                                    <label for="premium_catering" class="package-label">
+                                        <div class="package-header">
+                                            <h6>Premium Package</h6>
+                                            <span class="package-price">₹800/person</span>
+                                        </div>
+                                        <ul class="package-features">
+                                            <li>5 Course Meal</li>
+                                            <li>Soft Drinks & Mocktails</li>
+                                            <li>Professional Service</li>
+                                        </ul>
+                                    </label>
+                                </div>
+                                
+                                <div class="package-option">
+                                    <input type="radio" id="luxury_catering" name="catering_package" value="luxury" class="package-radio">
+                                    <label for="luxury_catering" class="package-label">
+                                        <div class="package-header">
+                                            <h6>Luxury Package</h6>
+                                            <span class="package-price">₹1,200/person</span>
+                                        </div>
+                                        <ul class="package-features">
+                                            <li>7 Course Meal</li>
+                                            <li>Premium Beverages</li>
+                                            <li>Butler Service</li>
+                                        </ul>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Information -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-user me-2"></i>Contact Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="contact_name" class="form-label">Contact Name *</label>
+                                    <input type="text" class="form-control" id="contact_name" name="contact_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="contact_phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="contact_phone" name="contact_phone" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="contact_email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="contact_email" name="contact_email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="venue_address" class="form-label">Venue Address</label>
+                                    <input type="text" class="form-control" id="venue_address" name="venue_address" placeholder="If different from Royal Palace">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Special Requirements -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-comment me-2"></i>Special Requirements</h5>
+                            <div class="mb-3">
+                                <label for="special_requirements" class="form-label">Any special requirements or requests?</label>
+                                <textarea class="form-control" id="special_requirements" name="special_requirements" rows="4" placeholder="Tell us about any special dietary requirements, allergies, or specific menu preferences..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-utensils me-2"></i>Book Catering Services
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Catering Package Styles */
+.catering-package-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.catering-package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+}
+
+.catering-package-card.featured {
+    border: 3px solid var(--primary-color);
+    transform: scale(1.05);
+}
+
+.package-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.package-header {
+    margin-bottom: 2rem;
+}
+
+.package-header h4 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.package-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.package-price .currency {
+    font-size: 1.5rem;
+    vertical-align: top;
+}
+
+.package-price .period {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.package-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f8f9fa;
+    color: var(--text-color);
+}
+
+.package-features li:last-child {
+    border-bottom: none;
+}
+
+.package-features i {
+    color: #28a745;
+    margin-right: 0.5rem;
+    width: 16px;
+}
+
+.package-details {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.package-details p {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.package-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* Catering Form Styles */
+.catering-form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-header h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-header p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.form-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.form-section h5 {
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.form-section h5 i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.form-label {
+    color: var(--dark-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Package Options Styles */
+.package-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.package-option {
+    position: relative;
+}
+
+.package-radio {
+    display: none;
+}
+
+.package-label {
+    display: block;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.package-radio:checked + .package-label {
+    border-color: var(--primary-color);
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.package-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.package-header h6 {
+    color: var(--dark-color);
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.package-price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.package-features li {
+    padding: 0.25rem 0;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.package-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 2rem;
+}
+
+.form-actions .btn {
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .catering-form-card {
+        padding: 2rem;
+    }
+    
+    .catering-package-card.featured {
+        transform: none;
+    }
+    
+    .package-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Form validation
+    $('.catering-form').submit(function(e) {
+        e.preventDefault();
+        
+        // Basic validation
+        let isValid = true;
+        const requiredFields = ['event_type', 'event_date', 'event_time', 'guest_count', 'contact_name', 'contact_phone', 'contact_email'];
+        
+        requiredFields.forEach(field => {
+            const value = $(`#${field}`).val();
+            if (!value) {
+                $(`#${field}`).addClass('is-invalid');
+                isValid = false;
+            } else {
+                $(`#${field}`).removeClass('is-invalid');
+            }
+        });
+        
+        // Check if a package is selected
+        if (!$('input[name="catering_package"]:checked').length) {
+            showNotification('Please select a catering package.', 'warning');
+            isValid = false;
+        }
+        
+        if (isValid) {
+            // Show success message
+            showNotification('Catering request submitted successfully! We will contact you soon.', 'success');
+            
+            // Reset form
+            this.reset();
+        } else {
+            showNotification('Please fill in all required fields.', 'warning');
+        }
+    });
+    
+    // Date validation - prevent past dates
+    $('#event_date').attr('min', new Date().toISOString().split('T')[0]);
+    
+    // Guest count validation
+    $('#guest_count').on('input', function() {
+        const value = parseInt($(this).val());
+        if (value < 50) {
+            $(this).addClass('is-invalid');
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    });
+    
+    // Package selection
+    $('.package-radio').change(function() {
+        $('.package-label').removeClass('selected');
+        $(this).next('.package-label').addClass('selected');
+    });
+    
+    // Smooth scrolling for anchor links
+    $('a[href^="#"]').on('click', function(event) {
+        var target = $(this.getAttribute('href'));
+        if (target.length) {
+            event.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top - 100
+            }, 1000);
+        }
+    });
+});
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}

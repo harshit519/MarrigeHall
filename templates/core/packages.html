@@ -1,0 +1,581 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Wedding Packages - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Wedding Packages</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Choose the Perfect Package for Your Special Day
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Package Comparison Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Wedding Packages</h2>
+            <p>Comprehensive packages designed for every budget and preference</p>
+        </div>
+        
+        <div class="row">
+            <!-- Basic Package -->
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Basic Package</h3>
+                        <div class="package-price">
+                            <span class="price">₹75,000</span>
+                            <span class="period">per day</span>
+                        </div>
+                        <div class="package-badge">Popular Choice</div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Venue Rental (8 hours)</li>
+                            <li><i class="fas fa-check"></i> Basic Decoration</li>
+                            <li><i class="fas fa-check"></i> Sound System</li>
+                            <li><i class="fas fa-check"></i> Catering (100 guests)</li>
+                            <li><i class="fas fa-check"></i> Parking Space</li>
+                            <li><i class="fas fa-check"></i> Event Coordinator</li>
+                            <li><i class="fas fa-check"></i> Basic Lighting</li>
+                            <li><i class="fas fa-check"></i> Setup & Cleanup</li>
+                        </ul>
+                    </div>
+                    <div class="package-action">
+                        <a href="{% url 'bookings:venue_list' %}" class="btn btn-outline-primary btn-block">
+                            Choose Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Premium Package -->
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="package-card featured">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-header">
+                        <h3>Premium Package</h3>
+                        <div class="package-price">
+                            <span class="price">₹1,25,000</span>
+                            <span class="period">per day</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Venue Rental (12 hours)</li>
+                            <li><i class="fas fa-check"></i> Premium Decoration</li>
+                            <li><i class="fas fa-check"></i> Professional Sound & Lighting</li>
+                            <li><i class="fas fa-check"></i> Catering (200 guests)</li>
+                            <li><i class="fas fa-check"></i> Photography (4 hours)</li>
+                            <li><i class="fas fa-check"></i> DJ Services</li>
+                            <li><i class="fas fa-check"></i> Wedding Cake</li>
+                            <li><i class="fas fa-check"></i> Dedicated Event Manager</li>
+                            <li><i class="fas fa-check"></i> Floral Arrangements</li>
+                            <li><i class="fas fa-check"></i> Guest Book & Pen</li>
+                        </ul>
+                    </div>
+                    <div class="package-action">
+                        <a href="{% url 'bookings:venue_list' %}" class="btn btn-primary btn-block">
+                            Choose Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Luxury Package -->
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Luxury Package</h3>
+                        <div class="package-price">
+                            <span class="price">₹2,00,000</span>
+                            <span class="period">per day</span>
+                        </div>
+                        <div class="package-badge">Ultimate Experience</div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Venue Rental (24 hours)</li>
+                            <li><i class="fas fa-check"></i> Luxury Decoration</li>
+                            <li><i class="fas fa-check"></i> Professional AV System</li>
+                            <li><i class="fas fa-check"></i> Premium Catering (300 guests)</li>
+                            <li><i class="fas fa-check"></i> Photography & Videography</li>
+                            <li><i class="fas fa-check"></i> Live Band</li>
+                            <li><i class="fas fa-check"></i> Wedding Cake & Desserts</li>
+                            <li><i class="fas fa-check"></i> Transportation Service</li>
+                            <li><i class="fas fa-check"></i> Personal Event Manager</li>
+                            <li><i class="fas fa-check"></i> Luxury Floral Design</li>
+                            <li><i class="fas fa-check"></i> Wedding Planner Consultation</li>
+                            <li><i class="fas fa-check"></i> Honeymoon Suite (1 night)</li>
+                        </ul>
+                    </div>
+                    <div class="package-action">
+                        <a href="{% url 'bookings:venue_list' %}" class="btn btn-outline-primary btn-block">
+                            Choose Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Services Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Additional Services</h2>
+            <p>Customize your package with these premium add-ons</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-addon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h4>Photography & Videography</h4>
+                    <p>Professional photography and videography services to capture your special moments.</p>
+                    <div class="service-price">From ₹25,000</div>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-addon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h4>Entertainment</h4>
+                    <p>Live music, DJ services, and entertainment packages for your celebration.</p>
+                    <div class="service-price">From ₹15,000</div>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-addon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h4>Decoration Services</h4>
+                    <p>Custom decoration themes and floral arrangements for your special day.</p>
+                    <div class="service-price">From ₹20,000</div>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-addon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h4>Transportation</h4>
+                    <p>Luxury transportation services for the wedding party and guests.</p>
+                    <div class="service-price">From ₹10,000</div>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Package Comparison Table -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Package Comparison</h2>
+            <p>Compare features across all packages</p>
+        </div>
+        <div class="table-responsive" data-aos="fade-up" data-aos-delay="200">
+            <table class="table table-hover package-comparison">
+                <thead>
+                    <tr>
+                        <th>Features</th>
+                        <th class="text-center">Basic</th>
+                        <th class="text-center">Premium</th>
+                        <th class="text-center">Luxury</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Venue Rental Duration</td>
+                        <td class="text-center">8 hours</td>
+                        <td class="text-center">12 hours</td>
+                        <td class="text-center">24 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Guest Capacity</td>
+                        <td class="text-center">100 guests</td>
+                        <td class="text-center">200 guests</td>
+                        <td class="text-center">300 guests</td>
+                    </tr>
+                    <tr>
+                        <td>Decoration</td>
+                        <td class="text-center">Basic</td>
+                        <td class="text-center">Premium</td>
+                        <td class="text-center">Luxury</td>
+                    </tr>
+                    <tr>
+                        <td>Sound System</td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Professional Lighting</td>
+                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Photography</td>
+                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+                        <td class="text-center">4 hours</td>
+                        <td class="text-center">Full day</td>
+                    </tr>
+                    <tr>
+                        <td>Videography</td>
+                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Entertainment</td>
+                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+                        <td class="text-center">DJ</td>
+                        <td class="text-center">Live Band</td>
+                    </tr>
+                    <tr>
+                        <td>Wedding Cake</td>
+                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Event Manager</td>
+                        <td class="text-center">Basic</td>
+                        <td class="text-center">Dedicated</td>
+                        <td class="text-center">Personal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>What Our Clients Say</h2>
+            <p>Real experiences from happy couples</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The Premium package was perfect for our wedding. Everything was beautifully arranged and the staff was incredibly professional."</p>
+                    <div class="testimonial-author">
+                        <strong>Priya & Rahul</strong>
+                        <small class="text-muted">Premium Package - 2024</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The Luxury package exceeded our expectations. The attention to detail and personalized service made our day truly magical."</p>
+                    <div class="testimonial-author">
+                        <strong>Anjali & Vikram</strong>
+                        <small class="text-muted">Luxury Package - 2024</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Great value for money with the Basic package. Everything was well-organized and our guests loved the venue."</p>
+                    <div class="testimonial-author">
+                        <strong>Meera & Arjun</strong>
+                        <small class="text-muted">Basic Package - 2024</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section bg-gradient text-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <h2 class="mb-4">Ready to Choose Your Package?</h2>
+                <p class="lead mb-4">
+                    Contact us today to discuss your requirements and get a personalized quote for your special day.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'core:contact' %}" class="btn btn-light btn-lg me-3">
+                        <i class="fas fa-phone me-2"></i>Get Quote
+                    </a>
+                    <a href="{% url 'bookings:venue_list' %}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-calendar-alt me-2"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Package Card Styles */
+.package-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: var(--transition);
+    height: 100%;
+    border: 2px solid transparent;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.package-card.featured {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.package-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: var(--dark-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.package-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.package-header h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.package-price .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+}
+
+.package-price .period {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.package-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.package-features li {
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.package-features li:last-child {
+    border-bottom: none;
+}
+
+.package-features i {
+    color: var(--success-color);
+    margin-right: 0.5rem;
+}
+
+.package-action .btn {
+    width: 100%;
+}
+
+/* Service Addon Card Styles */
+.service-addon-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.service-addon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.service-addon-card .service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.service-addon-card h4 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.service-addon-card p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.service-price {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Package Comparison Table Styles */
+.package-comparison {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.package-comparison th {
+    background: var(--primary-color);
+    color: var(--dark-color);
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+}
+
+.package-comparison td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.package-comparison tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Testimonial Card Styles */
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-rating {
+    margin-bottom: 1rem;
+}
+
+.testimonial-rating i {
+    color: var(--primary-color);
+    margin-right: 0.2rem;
+}
+
+.testimonial-card p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.testimonial-author strong {
+    color: var(--dark-color);
+    display: block;
+}
+
+.testimonial-author small {
+    color: var(--text-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .package-card.featured {
+        transform: none;
+    }
+    
+    .package-comparison {
+        font-size: 0.9rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Package card hover effects
+    $('.package-card').hover(
+        function() {
+            $(this).find('.package-price .price').addClass('text-primary');
+        },
+        function() {
+            $(this).find('.package-price .price').removeClass('text-primary');
+        }
+    );
+    
+    // Service addon card interactions
+    $('.service-addon-card').click(function() {
+        const serviceName = $(this).find('h4').text();
+        alert(`Detailed information about ${serviceName} will be displayed here.`);
+    });
+});
+</script>
+{% endblock %}

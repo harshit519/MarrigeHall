@@ -1,0 +1,951 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Garden Lawn - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Garden Lawn</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Beautiful Outdoor Venues Surrounded by Nature
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Venue Details Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8" data-aos="fade-right">
+                <div class="venue-gallery">
+                    <div class="main-image">
+                        <img src="{% static 'images/garden-lawn-main.jpg' %}" alt="Garden Lawn" class="img-fluid rounded">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <img src="{% static 'images/garden-lawn-1.jpg' %}" alt="Lawn View" class="img-fluid rounded thumbnail-img">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <img src="{% static 'images/garden-lawn-2.jpg' %}" alt="Garden Setting" class="img-fluid rounded thumbnail-img">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <img src="{% static 'images/garden-lawn-3.jpg' %}" alt="Outdoor Setup" class="img-fluid rounded thumbnail-img">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <img src="{% static 'images/garden-lawn-4.jpg' %}" alt="Natural Beauty" class="img-fluid rounded thumbnail-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4" data-aos="fade-left">
+                <div class="venue-info-card">
+                    <div class="venue-header">
+                        <h3>Royal Garden Lawn</h3>
+                        <div class="venue-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(4.8/5)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="venue-details">
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Capacity:</strong>
+                                <span>300-500 guests</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Location:</strong>
+                                <span>Outdoor Garden Area</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Timing:</strong>
+                                <span>6:00 AM - 10:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-rupee-sign"></i>
+                            <div>
+                                <strong>Starting Price:</strong>
+                                <span>₹35,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="venue-features">
+                        <h5>Lawn Features</h5>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-tree"></i>
+                                <span>Natural Setting</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-umbrella-beach"></i>
+                                <span>Shade Areas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Garden Lighting</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-parking"></i>
+                                <span>Parking Space</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>Outdoor Catering</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-music"></i>
+                                <span>Sound System</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="venue-actions">
+                        <a href="{% url 'bookings:create_booking' %}" class="btn btn-primary btn-lg w-100 mb-3">
+                            <i class="fas fa-calendar-alt me-2"></i>Book This Lawn
+                        </a>
+                        <a href="{% url 'core:contact' %}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-phone me-2"></i>Contact for Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lawn Specifications Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Lawn Specifications</h2>
+            <p>Everything you need to know about our garden lawn</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h5>Dimensions & Layout</h5>
+                    <ul class="spec-list">
+                        <li>Lawn Size: 100ft x 80ft (8000 sq ft)</li>
+                        <li>Garden Area: 150ft x 100ft</li>
+                        <li>Stage Area: 25ft x 20ft</li>
+                        <li>Dining Area: 80ft x 60ft</li>
+                        <li>Parking: 50+ vehicles</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h5>Natural Features</h5>
+                    <ul class="spec-list">
+                        <li>Mature Trees & Shade</li>
+                        <li>Flowering Plants & Gardens</li>
+                        <li>Water Features & Fountains</li>
+                        <li>Natural Grass Lawn</li>
+                        <li>Garden Pathways</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h5>Catering & Services</h5>
+                    <ul class="spec-list">
+                        <li>Outdoor Catering Setup</li>
+                        <li>Garden Kitchen Facilities</li>
+                        <li>Wait Staff Included</li>
+                        <li>Garden Furniture</li>
+                        <li>Decoration Services</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h5>Weather & Comfort</h5>
+                    <ul class="spec-list">
+                        <li>Shade Tents Available</li>
+                        <li>Heating for Evenings</li>
+                        <li>Rain Backup Plan</li>
+                        <li>Mosquito Control</li>
+                        <li>Comfortable Seating</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Pricing Packages</h2>
+            <p>Choose the perfect outdoor celebration package</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4>Garden Package</h4>
+                        <div class="price">
+                            <span class="currency">₹</span>
+                            <span class="amount">35,000</span>
+                            <span class="period">/day</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Lawn Rental (8 hours)</li>
+                            <li><i class="fas fa-check"></i> Basic Sound System</li>
+                            <li><i class="fas fa-check"></i> Garden Lighting</li>
+                            <li><i class="fas fa-check"></i> Garden Furniture</li>
+                            <li><i class="fas fa-check"></i> Parking Space</li>
+                            <li><i class="fas fa-check"></i> Cleaning Service</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="{% url 'bookings:create_booking' %}" class="btn btn-outline-primary w-100">Choose Package</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h4>Premium Garden</h4>
+                        <div class="price">
+                            <span class="currency">₹</span>
+                            <span class="amount">55,000</span>
+                            <span class="period">/day</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Lawn Rental (12 hours)</li>
+                            <li><i class="fas fa-check"></i> Professional Sound System</li>
+                            <li><i class="fas fa-check"></i> Premium Garden Lighting</li>
+                            <li><i class="fas fa-check"></i> Garden Decoration</li>
+                            <li><i class="fas fa-check"></i> Catering for 150 guests</li>
+                            <li><i class="fas fa-check"></i> Event Coordinator</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="{% url 'bookings:create_booking' %}" class="btn btn-primary w-100">Choose Package</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4>Luxury Garden</h4>
+                        <div class="price">
+                            <span class="currency">₹</span>
+                            <span class="amount">85,000</span>
+                            <span class="period">/day</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Lawn Rental (24 hours)</li>
+                            <li><i class="fas fa-check"></i> Premium Sound & Lighting</li>
+                            <li><i class="fas fa-check"></i> Full Garden Decoration</li>
+                            <li><i class="fas fa-check"></i> Catering for 300 guests</li>
+                            <li><i class="fas fa-check"></i> Photography Package</li>
+                            <li><i class="fas fa-check"></i> Wedding Planner</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="{% url 'bookings:create_booking' %}" class="btn btn-outline-primary w-100">Choose Package</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seasonal Highlights Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Seasonal Highlights</h2>
+            <p>Experience the beauty of nature in every season</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="season-card">
+                    <div class="season-icon spring">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h5>Spring (Mar-May)</h5>
+                    <p>Blooming flowers, fresh greenery, and pleasant weather perfect for outdoor celebrations.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="season-card">
+                    <div class="season-icon summer">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h5>Summer (Jun-Aug)</h5>
+                    <p>Lush gardens, evening celebrations, and beautiful sunset views over the lawn.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="season-card">
+                    <div class="season-icon autumn">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h5>Autumn (Sep-Nov)</h5>
+                    <p>Golden foliage, comfortable temperatures, and romantic outdoor settings.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="season-card">
+                    <div class="season-icon winter">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h5>Winter (Dec-Feb)</h5>
+                    <p>Cozy garden settings, warm lighting, and magical winter wonderland atmosphere.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Virtual Tour Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Virtual Garden Tour</h2>
+            <p>Explore our beautiful garden lawn virtually</p>
+        </div>
+        
+        <div class="virtual-tour-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="tour-preview">
+                <img src="{% static 'images/garden-tour-preview.jpg' %}" alt="Garden Tour" class="img-fluid rounded">
+                <div class="tour-overlay">
+                    <button class="btn btn-light btn-lg" onclick="startGardenTour()">
+                        <i class="fas fa-vr-cardboard me-2"></i>Start Garden Tour
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>What Our Guests Say</h2>
+            <p>Real experiences from outdoor celebrations</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The garden lawn was absolutely magical! The natural setting made our wedding feel like a fairy tale. Perfect for outdoor celebrations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h6>Neha & Vikram</h6>
+                            <small class="text-muted">Garden Wedding</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Beautiful outdoor venue with perfect weather. The garden lighting in the evening created such a romantic atmosphere."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h6>Priya & Arjun</h6>
+                            <small class="text-muted">Evening Reception</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The natural beauty of the garden made our birthday party unforgettable. Great space for outdoor activities and celebrations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h6>Rahul & Family</h6>
+                            <small class="text-muted">Birthday Party</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Venue Gallery Styles */
+.venue-gallery {
+    margin-bottom: 2rem;
+}
+
+.main-image {
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.main-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.thumbnail-gallery .thumbnail-img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-gallery .thumbnail-img:hover {
+    transform: scale(1.05);
+}
+
+/* Venue Info Card Styles */
+.venue-info-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 2rem;
+}
+
+.venue-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.venue-header h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.venue-rating {
+    color: #ffc107;
+    font-size: 1.1rem;
+}
+
+.venue-rating span {
+    color: var(--text-color);
+    margin-left: 0.5rem;
+}
+
+.venue-details {
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.detail-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    width: 20px;
+}
+
+.detail-item strong {
+    color: var(--dark-color);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.detail-item span {
+    color: var(--text-color);
+}
+
+.venue-features h5 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.feature-item i {
+    margin-right: 0.5rem;
+    width: 16px;
+}
+
+.venue-actions {
+    margin-top: 2rem;
+}
+
+/* Spec Card Styles */
+.spec-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.spec-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.spec-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.spec-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spec-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+    color: var(--text-color);
+}
+
+.spec-list li:last-child {
+    border-bottom: none;
+}
+
+/* Pricing Card Styles */
+.pricing-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card.featured {
+    border: 3px solid var(--primary-color);
+    transform: scale(1.05);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.pricing-header {
+    margin-bottom: 2rem;
+}
+
+.pricing-header h4 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.price .currency {
+    font-size: 1.5rem;
+    vertical-align: top;
+}
+
+.price .period {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+.pricing-features {
+    margin-bottom: 2rem;
+}
+
+.pricing-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f8f9fa;
+    color: var(--text-color);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features i {
+    color: #28a745;
+    margin-right: 0.5rem;
+    width: 16px;
+}
+
+/* Season Card Styles */
+.season-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.season-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.season-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.season-icon.spring {
+    background: linear-gradient(135deg, #4CAF50, #8BC34A);
+}
+
+.season-icon.summer {
+    background: linear-gradient(135deg, #FF9800, #FFC107);
+}
+
+.season-icon.autumn {
+    background: linear-gradient(135deg, #795548, #FF5722);
+}
+
+.season-icon.winter {
+    background: linear-gradient(135deg, #2196F3, #03A9F4);
+}
+
+.season-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.season-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Virtual Tour Styles */
+.virtual-tour-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tour-preview {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+.tour-preview img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.tour-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tour-preview:hover .tour-overlay {
+    opacity: 1;
+}
+
+/* Testimonial Card Styles */
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-content {
+    margin-bottom: 1.5rem;
+}
+
+.stars {
+    margin-bottom: 1rem;
+}
+
+.stars i {
+    color: #ffc107;
+    margin-right: 0.25rem;
+}
+
+.testimonial-content p {
+    color: var(--text-color);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+}
+
+.author-info h6 {
+    margin-bottom: 0.25rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .venue-info-card {
+        position: static;
+        margin-top: 2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pricing-card.featured {
+        transform: none;
+    }
+    
+    .main-image img {
+        height: 300px;
+    }
+    
+    .thumbnail-gallery .thumbnail-img {
+        height: 80px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Thumbnail gallery click handler
+    $('.thumbnail-img').click(function() {
+        const newSrc = $(this).attr('src');
+        $('.main-image img').fadeOut(300, function() {
+            $(this).attr('src', newSrc).fadeIn(300);
+        });
+    });
+    
+    // Smooth scrolling for anchor links
+    $('a[href^="#"]').on('click', function(event) {
+        var target = $(this.getAttribute('href'));
+        if (target.length) {
+            event.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top - 100
+            }, 1000);
+        }
+    });
+});
+
+function startGardenTour() {
+    // Virtual garden tour functionality
+    alert('Virtual garden tour will be implemented here. This could open a 360° view or video tour of the garden.');
+}
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}

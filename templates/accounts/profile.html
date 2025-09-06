@@ -1,0 +1,625 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">My Profile</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Manage Your Account Information
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Profile Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Profile Sidebar -->
+            <div class="col-lg-4 mb-4" data-aos="fade-right">
+                <div class="profile-sidebar">
+                    <div class="profile-header text-center">
+                        <div class="profile-avatar">
+                            {% if user.userprofile.profile_picture %}
+                                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle">
+                            {% else %}
+                                <div class="avatar-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <h4>{{ user.get_full_name|default:user.username }}</h4>
+                        <p class="text-muted">Member since {{ user.date_joined|date:"F Y" }}</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">{{ user.bookings.count }}</span>
+                                <span class="stat-label">Bookings</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">{{ user.orders.count }}</span>
+                                <span class="stat-label">Orders</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-nav">
+                        <a href="#profile-info" class="profile-nav-item active" data-bs-toggle="tab">
+                            <i class="fas fa-user me-2"></i>Profile Info
+                        </a>
+                        <a href="#account-settings" class="profile-nav-item" data-bs-toggle="tab">
+                            <i class="fas fa-cog me-2"></i>Account Settings
+                        </a>
+                        <a href="#notifications" class="profile-nav-item" data-bs-toggle="tab">
+                            <i class="fas fa-bell me-2"></i>Notifications
+                        </a>
+                        <a href="#security" class="profile-nav-item" data-bs-toggle="tab">
+                            <i class="fas fa-shield-alt me-2"></i>Security
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Content -->
+            <div class="col-lg-8" data-aos="fade-left">
+                <div class="profile-content">
+                    <div class="tab-content">
+                        <!-- Profile Info Tab -->
+                        <div class="tab-pane fade show active" id="profile-info">
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-user me-2"></i>Personal Information</h5>
+                                    <button class="btn btn-outline-primary btn-sm" onclick="editProfile()">
+                                        <i class="fas fa-edit me-1"></i>Edit
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">First Name</label>
+                                            <p class="profile-value">{{ user.first_name|default:"Not provided" }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Last Name</label>
+                                            <p class="profile-value">{{ user.last_name|default:"Not provided" }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Username</label>
+                                            <p class="profile-value">{{ user.username }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Email</label>
+                                            <p class="profile-value">{{ user.email }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Phone Number</label>
+                                            <p class="profile-value">{{ user.userprofile.phone_number|default:"Not provided" }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Address</label>
+                                            <p class="profile-value">{{ user.userprofile.address|default:"Not provided" }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Account Settings Tab -->
+                        <div class="tab-pane fade" id="account-settings">
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-cog me-2"></i>Account Settings</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h6>Email Notifications</h6>
+                                            <p>Receive updates about your bookings and special offers</p>
+                                        </div>
+                                        <div class="setting-control">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                                <label class="form-check-label" for="emailNotifications"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h6>SMS Notifications</h6>
+                                            <p>Get booking confirmations and reminders via SMS</p>
+                                        </div>
+                                        <div class="setting-control">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="smsNotifications">
+                                                <label class="form-check-label" for="smsNotifications"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h6>Newsletter Subscription</h6>
+                                            <p>Stay updated with our latest offers and events</p>
+                                        </div>
+                                        <div class="setting-control">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="newsletterSubscription" checked>
+                                                <label class="form-check-label" for="newsletterSubscription"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Notifications Tab -->
+                        <div class="tab-pane fade" id="notifications">
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-bell me-2"></i>Recent Notifications</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="notification-list">
+                                        <div class="notification-item">
+                                            <div class="notification-icon">
+                                                <i class="fas fa-calendar-check text-success"></i>
+                                            </div>
+                                            <div class="notification-content">
+                                                <h6>Booking Confirmed</h6>
+                                                <p>Your wedding hall booking for December 15, 2024 has been confirmed.</p>
+                                                <small class="text-muted">2 hours ago</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="notification-item">
+                                            <div class="notification-icon">
+                                                <i class="fas fa-gift text-warning"></i>
+                                            </div>
+                                            <div class="notification-content">
+                                                <h6>Special Offer</h6>
+                                                <p>Get 10% off on your next booking. Use code: ROYAL10</p>
+                                                <small class="text-muted">1 day ago</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="notification-item">
+                                            <div class="notification-icon">
+                                                <i class="fas fa-utensils text-info"></i>
+                                            </div>
+                                            <div class="notification-content">
+                                                <h6>Restaurant Order</h6>
+                                                <p>Your restaurant order #12345 has been delivered successfully.</p>
+                                                <small class="text-muted">3 days ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Security Tab -->
+                        <div class="tab-pane fade" id="security">
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-shield-alt me-2"></i>Security Settings</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="security-item">
+                                        <div class="security-info">
+                                            <h6>Change Password</h6>
+                                            <p>Update your account password for better security</p>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm" onclick="changePassword()">
+                                            Change Password
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="security-item">
+                                        <div class="security-info">
+                                            <h6>Two-Factor Authentication</h6>
+                                            <p>Add an extra layer of security to your account</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="twoFactorAuth">
+                                            <label class="form-check-label" for="twoFactorAuth"></label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="security-item">
+                                        <div class="security-info">
+                                            <h6>Login History</h6>
+                                            <p>View your recent login activity</p>
+                                        </div>
+                                        <button class="btn btn-outline-secondary btn-sm" onclick="viewLoginHistory()">
+                                            View History
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Actions Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Quick Actions</h2>
+            <p>Access your most important features</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="quick-action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h5>My Bookings</h5>
+                    <p>View and manage your event bookings</p>
+                    <a href="{% url 'bookings:my_bookings' %}" class="btn btn-primary btn-sm">
+                        View Bookings
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="quick-action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h5>My Orders</h5>
+                    <p>Track your restaurant orders</p>
+                    <a href="{% url 'restaurant:my_orders' %}" class="btn btn-primary btn-sm">
+                        View Orders
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="quick-action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h5>Favorites</h5>
+                    <p>Your saved venues and menu items</p>
+                    <a href="#" class="btn btn-primary btn-sm">
+                        View Favorites
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="quick-action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h5>Support</h5>
+                    <p>Get help and contact support</p>
+                    <a href="{% url 'core:contact' %}" class="btn btn-primary btn-sm">
+                        Contact Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Profile Sidebar Styles */
+.profile-sidebar {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.profile-avatar {
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+}
+
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 3rem;
+    color: var(--dark-color);
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.profile-nav {
+    margin-top: 2rem;
+}
+
+.profile-nav-item {
+    display: block;
+    padding: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.profile-nav-item:hover,
+.profile-nav-item.active {
+    background: var(--primary-color);
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
+/* Profile Content Styles */
+.profile-content {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.profile-card {
+    border: none;
+}
+
+.profile-card .card-header {
+    background: var(--primary-color);
+    color: var(--dark-color);
+    border: none;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-card .card-header h5 {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.profile-card .card-body {
+    padding: 2rem;
+}
+
+.profile-value {
+    background: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* Setting Item Styles */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-info h6 {
+    margin-bottom: 0.25rem;
+    color: var(--dark-color);
+}
+
+.setting-info p {
+    margin-bottom: 0;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* Notification Styles */
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.notification-content h6 {
+    margin-bottom: 0.25rem;
+    color: var(--dark-color);
+}
+
+.notification-content p {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+/* Security Item Styles */
+.security-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.security-item:last-child {
+    border-bottom: none;
+}
+
+.security-info h6 {
+    margin-bottom: 0.25rem;
+    color: var(--dark-color);
+}
+
+.security-info p {
+    margin-bottom: 0;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* Quick Action Card Styles */
+.quick-action-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.quick-action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.quick-action-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.quick-action-card p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .profile-sidebar {
+        margin-bottom: 2rem;
+    }
+    
+    .setting-item,
+    .security-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .profile-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Profile navigation
+    $('.profile-nav-item').click(function(e) {
+        e.preventDefault();
+        $('.profile-nav-item').removeClass('active');
+        $(this).addClass('active');
+        
+        const target = $(this).attr('href');
+        $('.tab-pane').removeClass('show active');
+        $(target).addClass('show active');
+    });
+    
+    // Settings toggles
+    $('.form-check-input').change(function() {
+        const setting = $(this).attr('id');
+        const isEnabled = $(this).is(':checked');
+        
+        // Show feedback
+        showNotification(`${setting.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())} ${isEnabled ? 'enabled' : 'disabled'}`, 'success');
+    });
+});
+
+function editProfile() {
+    // Redirect to edit profile page
+    window.location.href = "{% url 'accounts:edit_profile' %}";
+}
+
+function changePassword() {
+    // Show password change modal or redirect
+    alert('Password change functionality will be implemented here.');
+}
+
+function viewLoginHistory() {
+    // Show login history modal
+    alert('Login history will be displayed here.');
+}
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}

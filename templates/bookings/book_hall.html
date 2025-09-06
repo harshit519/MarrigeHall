@@ -1,0 +1,864 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Book Hall - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Book Your Event</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Reserve Your Perfect Venue for an Unforgettable Celebration
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Process Section -->
+<section class="section">
+    <div class="container">
+        <div class="booking-steps" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h5>Choose Date</h5>
+                        <p>Select your preferred date and time</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h5>Select Venue</h5>
+                        <p>Choose between our halls and lawns</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h5>Make Payment</h5>
+                        <p>Secure payment to confirm booking</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h5>Confirmation</h5>
+                        <p>Get instant booking confirmation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Venue Selection Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Choose Your Venue</h2>
+            <p>Select the perfect venue for your celebration</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="venue-selection-card" onclick="selectVenue('marriage-hall')">
+                    <div class="venue-image">
+                        <img src="{% static 'images/marriage-hall.jpg' %}" alt="Marriage Hall" class="img-fluid">
+                        <div class="venue-overlay">
+                            <div class="venue-badge">Indoor</div>
+                        </div>
+                    </div>
+                    <div class="venue-content">
+                        <h4>Marriage Hall</h4>
+                        <div class="venue-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>500-1000 guests</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Starting from ₹50,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-star"></i>
+                                <span>4.9/5 rating</span>
+                            </div>
+                        </div>
+                        <div class="venue-features">
+                            <span class="feature-tag">AC</span>
+                            <span class="feature-tag">Sound System</span>
+                            <span class="feature-tag">LED Lighting</span>
+                            <span class="feature-tag">Parking</span>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3">Select This Venue</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="venue-selection-card" onclick="selectVenue('garden-lawn')">
+                    <div class="venue-image">
+                        <img src="{% static 'images/garden-lawn.jpg' %}" alt="Garden Lawn" class="img-fluid">
+                        <div class="venue-overlay">
+                            <div class="venue-badge">Outdoor</div>
+                        </div>
+                    </div>
+                    <div class="venue-content">
+                        <h4>Garden Lawn</h4>
+                        <div class="venue-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>300-500 guests</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Starting from ₹35,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-star"></i>
+                                <span>4.8/5 rating</span>
+                            </div>
+                        </div>
+                        <div class="venue-features">
+                            <span class="feature-tag">Natural Setting</span>
+                            <span class="feature-tag">Garden Lighting</span>
+                            <span class="feature-tag">Shade Areas</span>
+                            <span class="feature-tag">Parking</span>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3">Select This Venue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Form Section -->
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="booking-form-card" data-aos="fade-up">
+                    <div class="form-header">
+                        <h3>Event Booking Form</h3>
+                        <p>Fill in the details to book your perfect event</p>
+                    </div>
+                    
+                    <form class="booking-form" method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-user me-2"></i>Personal Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="first_name" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="last_name" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Event Details -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-calendar me-2"></i>Event Details</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_type" class="form-label">Event Type *</label>
+                                    <select class="form-select" id="event_type" name="event_type" required>
+                                        <option value="">Select Event Type</option>
+                                        <option value="wedding">Wedding</option>
+                                        <option value="reception">Wedding Reception</option>
+                                        <option value="birthday">Birthday Party</option>
+                                        <option value="corporate">Corporate Event</option>
+                                        <option value="anniversary">Anniversary</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="venue_type" class="form-label">Venue Type *</label>
+                                    <select class="form-select" id="venue_type" name="venue_type" required>
+                                        <option value="">Select Venue</option>
+                                        <option value="marriage-hall">Marriage Hall</option>
+                                        <option value="garden-lawn">Garden Lawn</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_date" class="form-label">Event Date *</label>
+                                    <input type="date" class="form-control" id="event_date" name="event_date" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_time" class="form-label">Event Time *</label>
+                                    <input type="time" class="form-control" id="event_time" name="event_time" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="duration" class="form-label">Duration (Hours) *</label>
+                                    <select class="form-select" id="duration" name="duration" required>
+                                        <option value="">Select Duration</option>
+                                        <option value="4">4 Hours</option>
+                                        <option value="6">6 Hours</option>
+                                        <option value="8">8 Hours</option>
+                                        <option value="12">12 Hours</option>
+                                        <option value="24">24 Hours</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="guest_count" class="form-label">Number of Guests *</label>
+                                    <input type="number" class="form-control" id="guest_count" name="guest_count" min="50" max="1000" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Package Selection -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-gift me-2"></i>Package Selection</h5>
+                            <div class="package-options">
+                                <div class="package-option">
+                                    <input type="radio" id="basic" name="package" value="basic" class="package-radio">
+                                    <label for="basic" class="package-label">
+                                        <div class="package-header">
+                                            <h6>Basic Package</h6>
+                                            <span class="package-price">₹50,000</span>
+                                        </div>
+                                        <ul class="package-features">
+                                            <li>Venue Rental</li>
+                                            <li>Basic Sound System</li>
+                                            <li>Standard Lighting</li>
+                                            <li>Tables & Chairs</li>
+                                        </ul>
+                                    </label>
+                                </div>
+                                
+                                <div class="package-option">
+                                    <input type="radio" id="premium" name="package" value="premium" class="package-radio">
+                                    <label for="premium" class="package-label">
+                                        <div class="package-header">
+                                            <h6>Premium Package</h6>
+                                            <span class="package-price">₹75,000</span>
+                                        </div>
+                                        <ul class="package-features">
+                                            <li>Venue Rental</li>
+                                            <li>Professional Sound System</li>
+                                            <li>LED Stage Lighting</li>
+                                            <li>Decoration Setup</li>
+                                            <li>Catering for 200 guests</li>
+                                        </ul>
+                                    </label>
+                                </div>
+                                
+                                <div class="package-option">
+                                    <input type="radio" id="luxury" name="package" value="luxury" class="package-radio">
+                                    <label for="luxury" class="package-label">
+                                        <div class="package-header">
+                                            <h6>Luxury Package</h6>
+                                            <span class="package-price">₹1,25,000</span>
+                                        </div>
+                                        <ul class="package-features">
+                                            <li>Venue Rental</li>
+                                            <li>Premium Sound & Lighting</li>
+                                            <li>Full Decoration</li>
+                                            <li>Catering for 500 guests</li>
+                                            <li>Photography Package</li>
+                                            <li>Wedding Planner</li>
+                                        </ul>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Services -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-plus-circle me-2"></i>Additional Services</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="catering" name="additional_services" value="catering">
+                                        <label class="form-check-label" for="catering">
+                                            Catering Services (+₹15,000)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="decoration" name="additional_services" value="decoration">
+                                        <label class="form-check-label" for="decoration">
+                                            Decoration Services (+₹10,000)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="photography" name="additional_services" value="photography">
+                                        <label class="form-check-label" for="photography">
+                                            Photography (+₹20,000)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dj" name="additional_services" value="dj">
+                                        <label class="form-check-label" for="dj">
+                                            DJ Services (+₹8,000)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Special Requirements -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-comment me-2"></i>Special Requirements</h5>
+                            <div class="mb-3">
+                                <label for="special_requirements" class="form-label">Any special requirements or requests?</label>
+                                <textarea class="form-control" id="special_requirements" name="special_requirements" rows="4" placeholder="Tell us about any special requirements, dietary restrictions, or specific arrangements you need..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Terms and Conditions -->
+                        <div class="form-section">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                                <label class="form-check-label" for="terms">
+                                    I agree to the <a href="#" class="text-primary">Terms and Conditions</a> and <a href="#" class="text-primary">Privacy Policy</a> *
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-calendar-check me-2"></i>Book Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Why Choose Royal Palace?</h2>
+            <p>Experience the difference with our premium services</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h5>Premium Quality</h5>
+                    <p>Highest standards of service and facilities for your special occasions</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h5>24/7 Support</h5>
+                    <p>Round-the-clock customer support to assist you with all your needs</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5>Safe & Secure</h5>
+                    <p>Your safety and security are our top priorities at all times</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Booking Steps Styles */
+.booking-steps {
+    margin-bottom: 3rem;
+}
+
+.step-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.step-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.step-card p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+/* Venue Selection Styles */
+.venue-selection-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.venue-selection-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+}
+
+.venue-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.venue-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.venue-selection-card:hover .venue-image img {
+    transform: scale(1.05);
+}
+
+.venue-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.venue-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.venue-content {
+    padding: 2rem;
+}
+
+.venue-content h4 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.venue-details {
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.detail-item i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+    width: 16px;
+}
+
+.venue-features {
+    margin-bottom: 1.5rem;
+}
+
+.feature-tag {
+    display: inline-block;
+    background: #f8f9fa;
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Booking Form Styles */
+.booking-form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-header h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-header p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.form-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.form-section h5 {
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.form-section h5 i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.form-label {
+    color: var(--dark-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Package Options Styles */
+.package-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.package-option {
+    position: relative;
+}
+
+.package-radio {
+    display: none;
+}
+
+.package-label {
+    display: block;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.package-radio:checked + .package-label {
+    border-color: var(--primary-color);
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.package-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.package-header h6 {
+    color: var(--dark-color);
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.package-price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.package-features li {
+    padding: 0.25rem 0;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.package-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Feature Card Styles */
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.feature-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 2rem;
+}
+
+.form-actions .btn {
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .booking-form-card {
+        padding: 2rem;
+    }
+    
+    .venue-selection-card {
+        margin-bottom: 2rem;
+    }
+    
+    .package-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .step-card {
+        margin-bottom: 2rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Form validation
+    $('.booking-form').submit(function(e) {
+        e.preventDefault();
+        
+        // Basic validation
+        let isValid = true;
+        const requiredFields = ['first_name', 'last_name', 'email', 'phone', 'event_type', 'venue_type', 'event_date', 'event_time', 'duration', 'guest_count'];
+        
+        requiredFields.forEach(field => {
+            const value = $(`#${field}`).val();
+            if (!value) {
+                $(`#${field}`).addClass('is-invalid');
+                isValid = false;
+            } else {
+                $(`#${field}`).removeClass('is-invalid');
+            }
+        });
+        
+        if (!$('#terms').is(':checked')) {
+            $('#terms').addClass('is-invalid');
+            isValid = false;
+        } else {
+            $('#terms').removeClass('is-invalid');
+        }
+        
+        if (isValid) {
+            // Show success message
+            showNotification('Booking request submitted successfully! We will contact you soon.', 'success');
+            
+            // Reset form
+            this.reset();
+        } else {
+            showNotification('Please fill in all required fields.', 'warning');
+        }
+    });
+    
+    // Date validation - prevent past dates
+    $('#event_date').attr('min', new Date().toISOString().split('T')[0]);
+    
+    // Guest count validation
+    $('#guest_count').on('input', function() {
+        const value = parseInt($(this).val());
+        if (value < 50) {
+            $(this).addClass('is-invalid');
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    });
+    
+    // Package selection
+    $('.package-radio').change(function() {
+        $('.package-label').removeClass('selected');
+        $(this).next('.package-label').addClass('selected');
+    });
+});
+
+function selectVenue(venueType) {
+    // Update venue type in form
+    $('#venue_type').val(venueType);
+    
+    // Scroll to booking form
+    $('html, body').animate({
+        scrollTop: $('.booking-form-card').offset().top - 100
+    }, 1000);
+    
+    // Show notification
+    showNotification(`Selected ${venueType === 'marriage-hall' ? 'Marriage Hall' : 'Garden Lawn'}`, 'success');
+}
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}

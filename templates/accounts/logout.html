@@ -1,0 +1,556 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Logout - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Goodbye!</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    You have been successfully logged out
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Logout Confirmation Section -->
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8" data-aos="fade-up">
+                <div class="logout-card">
+                    <div class="logout-icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </div>
+                    
+                    <div class="logout-content text-center">
+                        <h3>Thank You for Visiting!</h3>
+                        <p class="text-muted mb-4">
+                            You have been successfully logged out of your account. 
+                            We hope you enjoyed your experience with Royal Palace.
+                        </p>
+                        
+                        <div class="logout-message">
+                            <div class="message-item">
+                                <i class="fas fa-check-circle text-success"></i>
+                                <span>Your session has been securely ended</span>
+                            </div>
+                            <div class="message-item">
+                                <i class="fas fa-shield-alt text-info"></i>
+                                <span>Your data is safe and protected</span>
+                            </div>
+                            <div class="message-item">
+                                <i class="fas fa-clock text-warning"></i>
+                                <span>Come back anytime for more celebrations</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="logout-actions">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login Again
+                                </a>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <a href="{% url 'core:home' %}" class="btn btn-outline-primary btn-lg w-100">
+                                    <i class="fas fa-home me-2"></i>Back to Home
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Links Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>What's Next?</h2>
+            <p>Explore our services and plan your next celebration</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h5>Book Your Event</h5>
+                    <p>Plan your perfect celebration with our beautiful venues</p>
+                    <a href="{% url 'bookings:venue_list' %}" class="btn btn-outline-primary btn-sm">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h5>Restaurant Menu</h5>
+                    <p>Explore our delicious cuisine and place an order</p>
+                    <a href="{% url 'restaurant:menu' %}" class="btn btn-outline-primary btn-sm">
+                        View Menu
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h5>Photo Gallery</h5>
+                    <p>Browse through our beautiful event photos</p>
+                    <a href="{% url 'gallery:gallery' %}" class="btn btn-outline-primary btn-sm">
+                        View Gallery
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h5>Contact Us</h5>
+                    <p>Get in touch for any questions or assistance</p>
+                    <a href="{% url 'core:contact' %}" class="btn btn-outline-primary btn-sm">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>What Our Customers Say</h2>
+            <p>Don't just take our word for it</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Amazing experience! The wedding hall was perfect and the staff was incredibly helpful. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h6>Priya Sharma</h6>
+                            <small class="text-muted">Wedding Celebration</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The restaurant food was delicious and the service was excellent. Will definitely order again!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h6>Rahul Verma</h6>
+                            <small class="text-muted">Restaurant Customer</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Perfect venue for our corporate event. Professional staff and beautiful facilities. Thank you!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h6>Anita Patel</h6>
+                            <small class="text-muted">Corporate Event</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="section bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h3>Stay Updated</h3>
+                <p class="mb-0">Subscribe to our newsletter for exclusive offers and event updates</p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Enter your email address">
+                        <button class="btn btn-light" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Logout Card Styles */
+.logout-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.logout-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.logout-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.logout-content h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.logout-message {
+    margin: 2rem 0;
+}
+
+.message-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.message-item:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.message-item i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.logout-actions {
+    margin-top: 2rem;
+}
+
+.logout-actions .btn {
+    border-radius: 25px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.logout-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Quick Link Card Styles */
+.quick-link-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.quick-link-card:hover::before {
+    transform: scaleX(1);
+}
+
+.quick-link-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.link-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.quick-link-card:hover .link-icon {
+    transform: scale(1.1);
+}
+
+.quick-link-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.quick-link-card p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Testimonial Card Styles */
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+    margin-bottom: 1.5rem;
+}
+
+.stars {
+    margin-bottom: 1rem;
+}
+
+.stars i {
+    color: #ffc107;
+    margin-right: 0.25rem;
+}
+
+.testimonial-content p {
+    color: var(--text-color);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+}
+
+.author-info h6 {
+    margin-bottom: 0.25rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+/* Newsletter Form Styles */
+.newsletter-form .input-group {
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-form .form-control {
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+}
+
+.newsletter-form .form-control:focus {
+    box-shadow: none;
+}
+
+.newsletter-form .btn {
+    border: none;
+    padding: 1rem 1.5rem;
+    background: var(--dark-color);
+    color: white;
+    transition: var(--transition);
+}
+
+.newsletter-form .btn:hover {
+    background: var(--primary-color);
+    transform: translateX(2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .logout-card {
+        padding: 2rem;
+    }
+    
+    .logout-icon {
+        font-size: 3rem;
+    }
+    
+    .message-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .message-item i {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .newsletter-form .input-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-form .btn {
+        border-radius: 0 0 25px 25px;
+        margin-top: 0.5rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Newsletter form submission
+    $('.newsletter-form').submit(function(e) {
+        e.preventDefault();
+        const email = $(this).find('input[type="email"]').val();
+        
+        if (email) {
+            showNotification('Thank you for subscribing to our newsletter!', 'success');
+            $(this).find('input[type="email"]').val('');
+        } else {
+            showNotification('Please enter a valid email address', 'warning');
+        }
+    });
+    
+    // Animate logout icon on page load
+    setTimeout(() => {
+        $('.logout-icon').addClass('animate__animated animate__bounceIn');
+    }, 500);
+});
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+
+// Auto redirect to home page after 30 seconds
+setTimeout(() => {
+    if (confirm('Would you like to return to the home page?')) {
+        window.location.href = "{% url 'core:home' %}";
+    }
+}, 30000);
+</script>
+{% endblock %}

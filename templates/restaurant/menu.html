@@ -1,0 +1,613 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Restaurant Menu - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Our Restaurant Menu</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Delicious Cuisine for Every Occasion
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Categories Section -->
+<section class="section">
+    <div class="container">
+        <div class="menu-filters text-center mb-4" data-aos="fade-up">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary active" data-filter="all">All</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="starters">Starters</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="main-course">Main Course</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="desserts">Desserts</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="beverages">Beverages</button>
+            </div>
+        </div>
+        
+        <!-- Menu Items Grid -->
+        <div class="menu-grid" id="menuGrid">
+            <!-- Starters -->
+            <div class="menu-item" data-category="starters" data-aos="fade-up" data-aos-delay="100">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="{% static 'images/menu/starter-1.jpg' %}" alt="Paneer Tikka" class="img-fluid">
+                        <div class="menu-overlay">
+                            <button class="btn btn-light btn-sm" onclick="addToCart(1, 'Paneer Tikka', 250)">
+                                <i class="fas fa-plus me-1"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h5>Paneer Tikka</h5>
+                            <span class="menu-price">₹250</span>
+                        </div>
+                        <p class="menu-description">Grilled cottage cheese with aromatic spices</p>
+                        <div class="menu-tags">
+                            <span class="badge bg-success">Veg</span>
+                            <span class="badge bg-warning">Spicy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="starters" data-aos="fade-up" data-aos-delay="200">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="{% static 'images/menu/starter-2.jpg' %}" alt="Chicken 65" class="img-fluid">
+                        <div class="menu-overlay">
+                            <button class="btn btn-light btn-sm" onclick="addToCart(2, 'Chicken 65', 300)">
+                                <i class="fas fa-plus me-1"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h5>Chicken 65</h5>
+                            <span class="menu-price">₹300</span>
+                        </div>
+                        <p class="menu-description">Spicy deep-fried chicken with curry leaves</p>
+                        <div class="menu-tags">
+                            <span class="badge bg-danger">Non-Veg</span>
+                            <span class="badge bg-warning">Spicy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Course -->
+            <div class="menu-item" data-category="main-course" data-aos="fade-up" data-aos-delay="300">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="{% static 'images/menu/main-1.jpg' %}" alt="Butter Chicken" class="img-fluid">
+                        <div class="menu-overlay">
+                            <button class="btn btn-light btn-sm" onclick="addToCart(3, 'Butter Chicken', 450)">
+                                <i class="fas fa-plus me-1"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h5>Butter Chicken</h5>
+                            <span class="menu-price">₹450</span>
+                        </div>
+                        <p class="menu-description">Creamy tomato-based curry with tender chicken</p>
+                        <div class="menu-tags">
+                            <span class="badge bg-danger">Non-Veg</span>
+                            <span class="badge bg-info">Popular</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="main-course" data-aos="fade-up" data-aos-delay="400">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="{% static 'images/menu/main-2.jpg' %}" alt="Dal Makhani" class="img-fluid">
+                        <div class="menu-overlay">
+                            <button class="btn btn-light btn-sm" onclick="addToCart(4, 'Dal Makhani', 200)">
+                                <i class="fas fa-plus me-1"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h5>Dal Makhani</h5>
+                            <span class="menu-price">₹200</span>
+                        </div>
+                        <p class="menu-description">Slow-cooked black lentils with cream</p>
+                        <div class="menu-tags">
+                            <span class="badge bg-success">Veg</span>
+                            <span class="badge bg-info">Popular</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desserts -->
+            <div class="menu-item" data-category="desserts" data-aos="fade-up" data-aos-delay="500">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="{% static 'images/menu/dessert-1.jpg' %}" alt="Gulab Jamun" class="img-fluid">
+                        <div class="menu-overlay">
+                            <button class="btn btn-light btn-sm" onclick="addToCart(5, 'Gulab Jamun', 150)">
+                                <i class="fas fa-plus me-1"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h5>Gulab Jamun</h5>
+                            <span class="menu-price">₹150</span>
+                        </div>
+                        <p class="menu-description">Sweet milk dumplings in sugar syrup</p>
+                        <div class="menu-tags">
+                            <span class="badge bg-success">Veg</span>
+                            <span class="badge bg-info">Sweet</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Beverages -->
+            <div class="menu-item" data-category="beverages" data-aos="fade-up" data-aos-delay="600">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="{% static 'images/menu/beverage-1.jpg' %}" alt="Masala Chai" class="img-fluid">
+                        <div class="menu-overlay">
+                            <button class="btn btn-light btn-sm" onclick="addToCart(6, 'Masala Chai', 80)">
+                                <i class="fas fa-plus me-1"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h5>Masala Chai</h5>
+                            <span class="menu-price">₹80</span>
+                        </div>
+                        <p class="menu-description">Traditional spiced Indian tea</p>
+                        <div class="menu-tags">
+                            <span class="badge bg-success">Veg</span>
+                            <span class="badge bg-info">Hot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chef's Special Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Chef's Special</h2>
+            <p>Today's recommended dishes</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="chef-special-card">
+                    <div class="special-badge">Chef's Pick</div>
+                    <div class="special-image">
+                        <img src="{% static 'images/menu/chef-special-1.jpg' %}" alt="Royal Biryani" class="img-fluid">
+                    </div>
+                    <div class="special-content">
+                        <h4>Royal Biryani</h4>
+                        <p>Aromatic basmati rice with tender meat and exotic spices</p>
+                        <div class="special-price">₹550</div>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Royal Biryani', 550)">
+                            <i class="fas fa-plus me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="chef-special-card">
+                    <div class="special-badge">Today's Special</div>
+                    <div class="special-image">
+                        <img src="{% static 'images/menu/chef-special-2.jpg' %}" alt="Tandoori Platter" class="img-fluid">
+                    </div>
+                    <div class="special-content">
+                        <h4>Tandoori Platter</h4>
+                        <p>Assorted grilled items with mint chutney and salad</p>
+                        <div class="special-price">₹650</div>
+                        <button class="btn btn-primary" onclick="addToCart(8, 'Tandoori Platter', 650)">
+                            <i class="fas fa-plus me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="chef-special-card">
+                    <div class="special-badge">Must Try</div>
+                    <div class="special-image">
+                        <img src="{% static 'images/menu/chef-special-3.jpg' %}" alt="Royal Thali" class="img-fluid">
+                    </div>
+                    <div class="special-content">
+                        <h4>Royal Thali</h4>
+                        <p>Complete meal with variety of dishes and accompaniments</p>
+                        <div class="special-price">₹400</div>
+                        <button class="btn btn-primary" onclick="addToCart(9, 'Royal Thali', 400)">
+                            <i class="fas fa-plus me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Table Reservation Section -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="reservation-content">
+                    <h2>Reserve Your Table</h2>
+                    <p class="lead">Book a table at our restaurant for a memorable dining experience.</p>
+                    <ul class="reservation-features">
+                        <li><i class="fas fa-check"></i> Online table booking</li>
+                        <li><i class="fas fa-check"></i> Special occasion arrangements</li>
+                        <li><i class="fas fa-check"></i> Group dining options</li>
+                        <li><i class="fas fa-check"></i> Priority seating</li>
+                    </ul>
+                    <a href="{% url 'restaurant:catering' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-utensils me-2"></i>Catering Services
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="reservation-image">
+                    <img src="{% static 'images/restaurant-interior.jpg' %}" alt="Restaurant Interior" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section bg-gradient text-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <h2 class="mb-4">Ready to Order?</h2>
+                <p class="lead mb-4">
+                    Place your order online or call us for delivery and takeaway services.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-light btn-lg me-3" onclick="viewCart()">
+                        <i class="fas fa-shopping-cart me-2"></i>View Cart
+                    </a>
+                    <a href="tel:+912212345680" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-phone me-2"></i>Call to Order
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Menu Filter Styles */
+.menu-filters .btn-group .btn {
+    border-radius: 25px;
+    margin: 0 0.25rem;
+    transition: var(--transition);
+}
+
+.menu-filters .btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Menu Grid Styles */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.menu-item {
+    transition: var(--transition);
+}
+
+.menu-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.menu-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.menu-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.menu-card:hover .menu-image img {
+    transform: scale(1.1);
+}
+
+.menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.menu-card:hover .menu-overlay {
+    opacity: 1;
+}
+
+.menu-content {
+    padding: 1.5rem;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.menu-header h5 {
+    color: var(--dark-color);
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.menu-price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.menu-description {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.menu-tags .badge {
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Chef's Special Card Styles */
+.chef-special-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.chef-special-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.special-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--primary-color);
+    color: var(--dark-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
+.special-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.special-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.chef-special-card:hover .special-image img {
+    transform: scale(1.1);
+}
+
+.special-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.special-content h4 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.special-content p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.special-price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Reservation Section Styles */
+.reservation-content h2 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.reservation-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.reservation-features li {
+    padding: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.reservation-features i {
+    color: var(--success-color);
+    margin-right: 0.5rem;
+}
+
+.reservation-image img {
+    box-shadow: var(--shadow);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .menu-filters .btn-group {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .menu-filters .btn {
+        margin: 0;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Menu Filter
+    $('.menu-filters .btn').click(function() {
+        $('.menu-filters .btn').removeClass('active');
+        $(this).addClass('active');
+        
+        const filter = $(this).data('filter');
+        
+        if (filter === 'all') {
+            $('.menu-item').show();
+        } else {
+            $('.menu-item').hide();
+            $('.menu-item[data-category="' + filter + '"]').show();
+        }
+    });
+});
+
+// Cart functionality
+let cart = [];
+
+function addToCart(id, name, price) {
+    const existingItem = cart.find(item => item.id === id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: id,
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+    
+    // Show success message
+    showNotification(`${name} added to cart!`, 'success');
+    
+    // Update cart count in navbar (if exists)
+    updateCartCount();
+}
+
+function viewCart() {
+    if (cart.length === 0) {
+        alert('Your cart is empty. Add some items first!');
+        return;
+    }
+    
+    let cartContent = 'Your Cart:\n\n';
+    let total = 0;
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        cartContent += `${item.name} x${item.quantity} - ₹${itemTotal}\n`;
+    });
+    
+    cartContent += `\nTotal: ₹${total}`;
+    cartContent += '\n\nWould you like to proceed to checkout?';
+    
+    if (confirm(cartContent)) {
+        // Redirect to checkout page
+        alert('Redirecting to checkout page...');
+    }
+}
+
+function updateCartCount() {
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    // Update cart count in navbar if it exists
+    $('.cart-count').text(cartCount);
+}
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}

@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Venues - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Our Venues</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Choose Your Perfect Venue for an Unforgettable Celebration
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Venues Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="{% static 'images/marriage-hall.jpg' %}" alt="Marriage Hall" class="img-fluid">
+                        <div class="venue-overlay">
+                            <div class="venue-badge">Indoor</div>
+                        </div>
+                    </div>
+                    <div class="venue-content">
+                        <h3>Marriage Hall</h3>
+                        <div class="venue-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>500-1000 guests</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Starting from ₹50,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-star"></i>
+                                <span>4.9/5 rating</span>
+                            </div>
+                        </div>
+                        <div class="venue-features">
+                            <span class="feature-tag">AC</span>
+                            <span class="feature-tag">Sound System</span>
+                            <span class="feature-tag">LED Lighting</span>
+                            <span class="feature-tag">Parking</span>
+                        </div>
+                        <div class="venue-actions">
+                            <a href="{% url 'bookings:marriage_hall' %}" class="btn btn-primary">View Details</a>
+                            <a href="{% url 'bookings:book_hall' %}" class="btn btn-outline-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="{% static 'images/garden-lawn.jpg' %}" alt="Garden Lawn" class="img-fluid">
+                        <div class="venue-overlay">
+                            <div class="venue-badge">Outdoor</div>
+                        </div>
+                    </div>
+                    <div class="venue-content">
+                        <h3>Garden Lawn</h3>
+                        <div class="venue-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>300-500 guests</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Starting from ₹35,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-star"></i>
+                                <span>4.8/5 rating</span>
+                            </div>
+                        </div>
+                        <div class="venue-features">
+                            <span class="feature-tag">Natural Setting</span>
+                            <span class="feature-tag">Garden Lighting</span>
+                            <span class="feature-tag">Shade Areas</span>
+                            <span class="feature-tag">Parking</span>
+                        </div>
+                        <div class="venue-actions">
+                            <a href="{% url 'bookings:garden_lawn' %}" class="btn btn-primary">View Details</a>
+                            <a href="{% url 'bookings:book_hall' %}" class="btn btn-outline-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Why Choose Our Venues?</h2>
+            <p>Experience the difference with our premium venues</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h5>Premium Quality</h5>
+                    <p>Highest standards of service and facilities for your special occasions</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h5>24/7 Support</h5>
+                    <p>Round-the-clock customer support to assist you with all your needs</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5>Safe & Secure</h5>
+                    <p>Your safety and security are our top priorities at all times</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Venue Card Styles */
+.venue-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.venue-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+}
+
+.venue-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.venue-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.venue-card:hover .venue-image img {
+    transform: scale(1.05);
+}
+
+.venue-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.venue-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.venue-content {
+    padding: 2rem;
+}
+
+.venue-content h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.venue-details {
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.detail-item i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+    width: 16px;
+}
+
+.venue-features {
+    margin-bottom: 1.5rem;
+}
+
+.feature-tag {
+    display: inline-block;
+    background: #f8f9fa;
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.venue-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.venue-actions .btn {
+    flex: 1;
+    border-radius: 25px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+}
+
+/* Feature Card Styles */
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.feature-card h5 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .venue-actions {
+        flex-direction: column;
+    }
+    
+    .venue-image {
+        height: 250px;
+    }
+}
+</style>
+{% endblock %}

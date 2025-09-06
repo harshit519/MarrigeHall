@@ -1,0 +1,621 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gallery - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Our Gallery</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Beautiful Moments Captured at Royal Palace
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Filters Section -->
+<section class="section">
+    <div class="container">
+        <div class="gallery-filters text-center mb-4" data-aos="fade-up">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary active" data-filter="all">All</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="wedding">Weddings</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="birthday">Birthdays</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="corporate">Corporate</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="restaurant">Restaurant</button>
+                <button type="button" class="btn btn-outline-primary" data-filter="decoration">Decoration</button>
+            </div>
+        </div>
+        
+        <!-- Image Gallery -->
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Wedding Images -->
+            <div class="gallery-item" data-category="wedding" data-aos="zoom-in" data-aos-delay="100">
+                <a href="{% static 'images/gallery/wedding-1.jpg' %}" data-lightbox="gallery" data-title="Beautiful Wedding Setup">
+                    <img src="{% static 'images/gallery/wedding-1.jpg' %}" alt="Wedding Hall" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Royal Wedding Setup</h5>
+                            <p>Elegant wedding decoration with floral arrangements</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="gallery-item" data-category="wedding" data-aos="zoom-in" data-aos-delay="200">
+                <a href="{% static 'images/gallery/wedding-2.jpg' %}" data-lightbox="gallery" data-title="Wedding Reception">
+                    <img src="{% static 'images/gallery/wedding-2.jpg' %}" alt="Wedding Reception" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Wedding Reception</h5>
+                            <p>Grand reception celebration</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Birthday Images -->
+            <div class="gallery-item" data-category="birthday" data-aos="zoom-in" data-aos-delay="300">
+                <a href="{% static 'images/gallery/birthday-1.jpg' %}" data-lightbox="gallery" data-title="Birthday Celebration">
+                    <img src="{% static 'images/gallery/birthday-1.jpg' %}" alt="Birthday Party" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Birthday Celebration</h5>
+                            <p>Colorful birthday party setup</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Corporate Images -->
+            <div class="gallery-item" data-category="corporate" data-aos="zoom-in" data-aos-delay="400">
+                <a href="{% static 'images/gallery/corporate-1.jpg' %}" data-lightbox="gallery" data-title="Corporate Event">
+                    <img src="{% static 'images/gallery/corporate-1.jpg' %}" alt="Corporate Event" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Corporate Conference</h5>
+                            <p>Professional corporate event setup</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Restaurant Images -->
+            <div class="gallery-item" data-category="restaurant" data-aos="zoom-in" data-aos-delay="500">
+                <a href="{% static 'images/gallery/restaurant-1.jpg' %}" data-lightbox="gallery" data-title="Restaurant Dining">
+                    <img src="{% static 'images/gallery/restaurant-1.jpg' %}" alt="Restaurant" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Fine Dining</h5>
+                            <p>Elegant restaurant atmosphere</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Decoration Images -->
+            <div class="gallery-item" data-category="decoration" data-aos="zoom-in" data-aos-delay="600">
+                <a href="{% static 'images/gallery/decoration-1.jpg' %}" data-lightbox="gallery" data-title="Wedding Decoration">
+                    <img src="{% static 'images/gallery/decoration-1.jpg' %}" alt="Wedding Decoration" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Wedding Decoration</h5>
+                            <p>Beautiful floral arrangements</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- More Wedding Images -->
+            <div class="gallery-item" data-category="wedding" data-aos="zoom-in" data-aos-delay="700">
+                <a href="{% static 'images/gallery/wedding-3.jpg' %}" data-lightbox="gallery" data-title="Wedding Ceremony">
+                    <img src="{% static 'images/gallery/wedding-3.jpg' %}" alt="Wedding Ceremony" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Wedding Ceremony</h5>
+                            <p>Traditional wedding ceremony setup</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- More Birthday Images -->
+            <div class="gallery-item" data-category="birthday" data-aos="zoom-in" data-aos-delay="800">
+                <a href="{% static 'images/gallery/birthday-2.jpg' %}" data-lightbox="gallery" data-title="Birthday Party">
+                    <img src="{% static 'images/gallery/birthday-2.jpg' %}" alt="Birthday Party" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Birthday Party</h5>
+                            <p>Fun birthday celebration</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- More Corporate Images -->
+            <div class="gallery-item" data-category="corporate" data-aos="zoom-in" data-aos-delay="900">
+                <a href="{% static 'images/gallery/corporate-2.jpg' %}" data-lightbox="gallery" data-title="Corporate Meeting">
+                    <img src="{% static 'images/gallery/corporate-2.jpg' %}" alt="Corporate Meeting" class="img-fluid">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Corporate Meeting</h5>
+                            <p>Professional meeting setup</p>
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Gallery Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Video Gallery</h2>
+            <p>Watch our beautiful events in action</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="{% static 'images/gallery/video-thumb-1.jpg' %}" alt="Wedding Video" class="img-fluid">
+                        <div class="video-overlay">
+                            <button class="btn btn-light btn-lg" onclick="playVideo('video1')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h5>Royal Wedding Celebration</h5>
+                        <p>Beautiful wedding ceremony and reception highlights</p>
+                        <small class="text-muted">Duration: 3:45</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="{% static 'images/gallery/video-thumb-2.jpg' %}" alt="Birthday Video" class="img-fluid">
+                        <div class="video-overlay">
+                            <button class="btn btn-light btn-lg" onclick="playVideo('video2')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h5>Birthday Party Highlights</h5>
+                        <p>Fun and colorful birthday celebration</p>
+                        <small class="text-muted">Duration: 2:30</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="{% static 'images/gallery/video-thumb-3.jpg' %}" alt="Corporate Video" class="img-fluid">
+                        <div class="video-overlay">
+                            <button class="btn btn-light btn-lg" onclick="playVideo('video3')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h5>Corporate Event Showcase</h5>
+                        <p>Professional corporate event setup and execution</p>
+                        <small class="text-muted">Duration: 4:15</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Virtual Tour Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Virtual Tour</h2>
+            <p>Explore our venues virtually</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="virtual-tour-card">
+                    <div class="tour-preview">
+                        <img src="{% static 'images/gallery/virtual-hall.jpg' %}" alt="Marriage Hall" class="img-fluid">
+                        <div class="tour-overlay">
+                            <button class="btn btn-light" onclick="openVirtualTour('hall')">
+                                <i class="fas fa-vr-cardboard me-2"></i>Explore Hall
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tour-info">
+                        <h5>Marriage Hall</h5>
+                        <p>Spacious indoor venue with modern amenities</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="virtual-tour-card">
+                    <div class="tour-preview">
+                        <img src="{% static 'images/gallery/virtual-lawn.jpg' %}" alt="Garden Lawn" class="img-fluid">
+                        <div class="tour-overlay">
+                            <button class="btn btn-light" onclick="openVirtualTour('lawn')">
+                                <i class="fas fa-vr-cardboard me-2"></i>Explore Lawn
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tour-info">
+                        <h5>Garden Lawn</h5>
+                        <p>Beautiful outdoor venue surrounded by nature</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="virtual-tour-card">
+                    <div class="tour-preview">
+                        <img src="{% static 'images/gallery/virtual-restaurant.jpg' %}" alt="Restaurant" class="img-fluid">
+                        <div class="tour-overlay">
+                            <button class="btn btn-light" onclick="openVirtualTour('restaurant')">
+                                <i class="fas fa-vr-cardboard me-2"></i>Explore Restaurant
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tour-info">
+                        <h5>Restaurant</h5>
+                        <p>Elegant dining space with fine cuisine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section bg-gradient text-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <h2 class="mb-4">Ready to Create Your Own Beautiful Memories?</h2>
+                <p class="lead mb-4">
+                    Book your event with us and let us help you create moments that will last a lifetime.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'bookings:venue_list' %}" class="btn btn-light btn-lg me-3">
+                        <i class="fas fa-calendar-alt me-2"></i>Book Now
+                    </a>
+                    <a href="{% url 'core:contact' %}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-phone me-2"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Video Player</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="videoPlayer" class="text-center">
+                    <iframe id="videoFrame" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Gallery Filter Styles */
+.gallery-filters .btn-group .btn {
+    border-radius: 25px;
+    margin: 0 0.25rem;
+    transition: var(--transition);
+}
+
+.gallery-filters .btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Gallery Grid Styles */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-info {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+}
+
+.gallery-info h5 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.gallery-info p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.gallery-info i {
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+/* Video Card Styles */
+.video-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.video-thumbnail {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.video-card:hover .video-overlay {
+    opacity: 1;
+}
+
+.video-info {
+    padding: 1.5rem;
+}
+
+.video-info h5 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.video-info p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Virtual Tour Card Styles */
+.virtual-tour-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.virtual-tour-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.tour-preview {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.tour-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.virtual-tour-card:hover .tour-preview img {
+    transform: scale(1.05);
+}
+
+.tour-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.virtual-tour-card:hover .tour-overlay {
+    opacity: 1;
+}
+
+.tour-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.tour-info h5 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.tour-info p {
+    color: var(--text-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .gallery-filters .btn-group {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .gallery-filters .btn {
+        margin: 0;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Gallery Filter
+    $('.gallery-filters .btn').click(function() {
+        $('.gallery-filters .btn').removeClass('active');
+        $(this).addClass('active');
+        
+        const filter = $(this).data('filter');
+        
+        if (filter === 'all') {
+            $('.gallery-item').show();
+        } else {
+            $('.gallery-item').hide();
+            $('.gallery-item[data-category="' + filter + '"]').show();
+        }
+    });
+    
+    // Initialize Lightbox
+    if (typeof lightbox !== 'undefined') {
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'albumLabel': 'Image %1 of %2'
+        });
+    }
+});
+
+// Video functions
+function playVideo(videoId) {
+    const videoUrls = {
+        'video1': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        'video2': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        'video3': 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    };
+    
+    $('#videoFrame').attr('src', videoUrls[videoId]);
+    $('#videoModal').modal('show');
+}
+
+function openVirtualTour(venue) {
+    const tourUrls = {
+        'hall': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007%2C%20USA!5e0!3m2!1sen!2sin!4v1640995200000!5m2!1sen!2sin',
+        'lawn': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007%2C%20USA!5e0!3m2!1sen!2sin!4v1640995200000!5m2!1sen!2sin',
+        'restaurant': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007%2C%20USA!5e0!3m2!1sen!2sin!4v1640995200000!5m2!1sen!2sin'
+    };
+    
+    $('#videoFrame').attr('src', tourUrls[venue]);
+    $('#videoModal').modal('show');
+}
+
+// Close video modal and stop video
+$('#videoModal').on('hidden.bs.modal', function () {
+    $('#videoFrame').attr('src', '');
+});
+</script>
+{% endblock %}

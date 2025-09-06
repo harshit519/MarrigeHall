@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Booking - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Create Booking</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Book Your Perfect Event with Royal Palace
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Form Section -->
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="booking-form-card" data-aos="fade-up">
+                    <div class="form-header">
+                        <h3>Event Booking Form</h3>
+                        <p>Fill in the details to book your perfect event</p>
+                    </div>
+                    
+                    <form class="booking-form" method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-user me-2"></i>Personal Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="first_name" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="last_name" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Event Details -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-calendar me-2"></i>Event Details</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_type" class="form-label">Event Type *</label>
+                                    <select class="form-select" id="event_type" name="event_type" required>
+                                        <option value="">Select Event Type</option>
+                                        <option value="wedding">Wedding</option>
+                                        <option value="reception">Wedding Reception</option>
+                                        <option value="birthday">Birthday Party</option>
+                                        <option value="corporate">Corporate Event</option>
+                                        <option value="anniversary">Anniversary</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="venue_type" class="form-label">Venue Type *</label>
+                                    <select class="form-select" id="venue_type" name="venue_type" required>
+                                        <option value="">Select Venue</option>
+                                        <option value="marriage-hall">Marriage Hall</option>
+                                        <option value="garden-lawn">Garden Lawn</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_date" class="form-label">Event Date *</label>
+                                    <input type="date" class="form-control" id="event_date" name="event_date" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="event_time" class="form-label">Event Time *</label>
+                                    <input type="time" class="form-control" id="event_time" name="event_time" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="duration" class="form-label">Duration (Hours) *</label>
+                                    <select class="form-select" id="duration" name="duration" required>
+                                        <option value="">Select Duration</option>
+                                        <option value="4">4 Hours</option>
+                                        <option value="6">6 Hours</option>
+                                        <option value="8">8 Hours</option>
+                                        <option value="12">12 Hours</option>
+                                        <option value="24">24 Hours</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="guest_count" class="form-label">Number of Guests *</label>
+                                    <input type="number" class="form-control" id="guest_count" name="guest_count" min="50" max="1000" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Special Requirements -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-comment me-2"></i>Special Requirements</h5>
+                            <div class="mb-3">
+                                <label for="special_requirements" class="form-label">Any special requirements or requests?</label>
+                                <textarea class="form-control" id="special_requirements" name="special_requirements" rows="4" placeholder="Tell us about any special requirements, dietary restrictions, or specific arrangements you need..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-calendar-check me-2"></i>Create Booking
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Booking Form Styles */
+.booking-form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-header h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-header p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.form-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.form-section h5 {
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.form-section h5 i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.form-label {
+    color: var(--dark-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 2rem;
+}
+
+.form-actions .btn {
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .booking-form-card {
+        padding: 2rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Form validation
+    $('.booking-form').submit(function(e) {
+        e.preventDefault();
+        
+        // Basic validation
+        let isValid = true;
+        const requiredFields = ['first_name', 'last_name', 'email', 'phone', 'event_type', 'venue_type', 'event_date', 'event_time', 'duration', 'guest_count'];
+        
+        requiredFields.forEach(field => {
+            const value = $(`#${field}`).val();
+            if (!value) {
+                $(`#${field}`).addClass('is-invalid');
+                isValid = false;
+            } else {
+                $(`#${field}`).removeClass('is-invalid');
+            }
+        });
+        
+        if (isValid) {
+            // Show success message
+            showNotification('Booking created successfully!', 'success');
+            
+            // Submit form
+            this.submit();
+        } else {
+            showNotification('Please fill in all required fields.', 'warning');
+        }
+    });
+    
+    // Date validation - prevent past dates
+    $('#event_date').attr('min', new Date().toISOString().split('T')[0]);
+    
+    // Guest count validation
+    $('#guest_count').on('input', function() {
+        const value = parseInt($(this).val());
+        if (value < 50) {
+            $(this).addClass('is-invalid');
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    });
+});
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}

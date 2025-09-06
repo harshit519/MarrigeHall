@@ -1,0 +1,541 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Contact Us</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Get in Touch for Your Perfect Event
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h4>Our Location</h4>
+                    <p>{{ site_settings.address|default:"123 Royal Palace Road\nMumbai, Maharashtra 400001\nIndia"|linebreaksbr }}</p>
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-directions me-2"></i>Get Directions
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h4>Phone Numbers</h4>
+                    <p>
+                        <strong>Main Office:</strong> {{ site_settings.phone|default:'+91 22 1234 5678' }}<br>
+                        <strong>WhatsApp:</strong> {{ site_settings.whatsapp|default:'+91 22 1234 5679' }}
+                    </p>
+                    <a href="tel:{{ site_settings.phone|default:'+912212345678' }}" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Email Us</h4>
+                    <p>
+                        <strong>General:</strong> {{ site_settings.email|default:'info@royalpalace.com' }}
+                    </p>
+                    <a href="mailto:{{ site_settings.email|default:'info@royalpalace.com' }}" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-envelope me-2"></i>Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form & Map Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-right">
+                <div class="contact-form-card">
+                    <h3 class="mb-4">Send Us a Message</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name *</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name *</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventType" class="form-label">Event Type</label>
+                            <select class="form-select" id="eventType" name="eventType">
+                                <option value="">Select Event Type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="birthday">Birthday Party</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="reception">Reception</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDate" class="form-label">Preferred Event Date</label>
+                            <input type="date" class="form-control" id="eventDate" name="eventDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="guestCount" class="form-label">Number of Guests</label>
+                            <input type="number" class="form-control" id="guestCount" name="guestCount" min="1" max="1000">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tell us about your event requirements..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Subscribe to our newsletter for updates and special offers
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-left">
+                <div class="map-card">
+                    <h3 class="mb-4">Find Us</h3>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.1234567890123!2d72.87654321098765!3d19.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c1234567890%3A0xabcdef1234567890!2sRoyal%20Palace!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="map-info mt-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="map-info-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <strong>Opening Hours</strong><br>
+                                        Mon-Sun: 9:00 AM - 11:00 PM
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="map-info-item">
+                                    <i class="fas fa-parking"></i>
+                                    <div>
+                                        <strong>Free Parking</strong><br>
+                                        Available for all guests
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Business Hours Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="hours-card">
+                    <h3 class="mb-4">Business Hours</h3>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span class="day">Monday - Friday</span>
+                            <span class="time">9:00 AM - 11:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Saturday</span>
+                            <span class="time">8:00 AM - 12:00 AM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Sunday</span>
+                            <span class="time">8:00 AM - 12:00 AM</span>
+                        </div>
+                        <div class="hours-item special">
+                            <span class="day">Holidays</span>
+                            <span class="time">24 Hours Available</span>
+                        </div>
+                    </div>
+                    <div class="hours-note">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Note:</strong> For urgent bookings outside business hours, please call our emergency number: {{ site_settings.phone|default:'+91 98765 43210' }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="social-card">
+                    <h3 class="mb-4">Connect With Us</h3>
+                    <p class="mb-4">Follow us on social media for updates, special offers, and beautiful event photos.</p>
+                    <div class="social-links">
+                        {% if site_settings.facebook_url %}<a href="{{ site_settings.facebook_url }}" target="_blank" class="social-link facebook"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>{% endif %}
+                        {% if site_settings.instagram_url %}<a href="{{ site_settings.instagram_url }}" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>{% endif %}
+                        {% if site_settings.twitter_url %}<a href="{{ site_settings.twitter_url }}" target="_blank" class="social-link twitter"><i class="fab fa-twitter"></i><span>Twitter</span></a>{% endif %}
+                        {% if site_settings.youtube_url %}<a href="{{ site_settings.youtube_url }}" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i><span>YouTube</span></a>{% endif %}
+                        {% if site_settings.whatsapp %}<a href="https://wa.me/{{ site_settings.whatsapp|default:'919879745268' }}" target="_blank" class="social-link whatsapp"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Frequently Asked Questions</h2>
+            <p>Quick answers to common questions</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="contactFAQ">
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                How far in advance should I book my event?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#contactFAQ">
+                            <div class="accordion-body">
+                                We recommend booking at least 3-6 months in advance for weddings and large events. For smaller events, 1-2 months notice is usually sufficient.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Do you provide catering services?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                            <div class="accordion-body">
+                                Yes, we provide comprehensive catering services with customizable menus. Our professional chefs can accommodate various dietary requirements.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                What is your cancellation policy?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                            <div class="accordion-body">
+                                Cancellations made 30 days before the event receive a 90% refund, 15 days before receive 50% refund, and less than 7 days are non-refundable.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section bg-gradient text-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <h2 class="mb-4">Ready to Start Planning Your Event?</h2>
+                <p class="lead mb-4">
+                    Contact us today and let our team help you create the perfect celebration. 
+                    We're here to make your dreams come true.
+                </p>
+                <div class="cta-buttons">
+                    <a href="tel:{{ site_settings.phone|default:'+912212345678' }}" class="btn btn-light btn-lg me-3">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                    <a href="{% url 'bookings:venue_list' %}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-calendar-alt me-2"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Contact Info Card Styles */
+.contact-info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.contact-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-card h4 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.contact-info-card p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Contact Form Card Styles */
+.contact-form-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.contact-form-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 2rem;
+}
+
+.contact-form .form-control,
+.contact-form .form-select {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    transition: var(--transition);
+}
+
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Map Card Styles */
+.map-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.map-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 2rem;
+}
+
+.map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.map-info-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+/* Hours Card Styles */
+.hours-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.hours-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 2rem;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.hours-item:last-child {
+    border-bottom: none;
+}
+
+.hours-item.special {
+    background: linear-gradient(45deg, var(--primary-color), #ffd700);
+    color: var(--dark-color);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.hours-note {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* Social Card Styles */
+.social-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.social-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: var(--transition);
+    text-align: center;
+    justify-content: center;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    color: white;
+    text-decoration: none;
+}
+
+.social-link.facebook { background: #1877f2; }
+.social-link.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-link.twitter { background: #1da1f2; }
+.social-link.youtube { background: #ff0000; }
+.social-link.whatsapp { background: #25d366; }
+.social-link.linkedin { background: #0077b5; }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hours-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .social-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Contact form submission
+    $('#contactForm').submit(function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitBtn = $(this).find('button[type="submit"]');
+        const originalText = submitBtn.html();
+        submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Sending...');
+        submitBtn.prop('disabled', true);
+        
+        // Simulate form submission
+        setTimeout(() => {
+            // Show success message
+            submitBtn.html('<i class="fas fa-check me-2"></i>Message Sent!');
+            submitBtn.removeClass('btn-primary').addClass('btn-success');
+            
+            // Reset form
+            setTimeout(() => {
+                $('#contactForm')[0].reset();
+                submitBtn.html(originalText);
+                submitBtn.removeClass('btn-success').addClass('btn-primary');
+                submitBtn.prop('disabled', false);
+                
+                // Show success notification
+                alert('Thank you! Your message has been sent successfully. We will get back to you soon.');
+            }, 2000);
+        }, 2000);
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,477 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Place Order - Royal Palace{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero bg-gradient">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title" data-aos="fade-up">Place Your Order</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Order Delicious Food from Royal Palace
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Order Form Section -->
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="order-form-card" data-aos="fade-up">
+                    <div class="form-header">
+                        <h3>Place Your Order</h3>
+                        <p>Fill in the details to place your order</p>
+                    </div>
+                    
+                    <form class="order-form" method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Customer Information -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-user me-2"></i>Customer Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="customer_name" class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone_number" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="order_type" class="form-label">Order Type *</label>
+                                    <select class="form-select" id="order_type" name="order_type" required>
+                                        <option value="">Select Order Type</option>
+                                        <option value="delivery">Delivery</option>
+                                        <option value="pickup">Pickup</option>
+                                        <option value="dine_in">Dine In</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Delivery Information -->
+                        <div class="form-section" id="delivery-section" style="display: none;">
+                            <h5><i class="fas fa-map-marker-alt me-2"></i>Delivery Information</h5>
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <label for="delivery_address" class="form-label">Delivery Address *</label>
+                                    <textarea class="form-control" id="delivery_address" name="delivery_address" rows="3" placeholder="Enter your complete delivery address"></textarea>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="delivery_date" class="form-label">Delivery Date *</label>
+                                    <input type="date" class="form-control" id="delivery_date" name="delivery_date">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="delivery_time" class="form-label">Delivery Time *</label>
+                                    <input type="time" class="form-control" id="delivery_time" name="delivery_time">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Items Selection -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-utensils me-2"></i>Menu Items</h5>
+                            <div class="menu-selection">
+                                <div class="menu-categories">
+                                    <button type="button" class="btn btn-outline-primary active" data-category="all">All Items</button>
+                                    <button type="button" class="btn btn-outline-primary" data-category="starters">Starters</button>
+                                    <button type="button" class="btn btn-outline-primary" data-category="main-course">Main Course</button>
+                                    <button type="button" class="btn btn-outline-primary" data-category="desserts">Desserts</button>
+                                    <button type="button" class="btn btn-outline-primary" data-category="beverages">Beverages</button>
+                                </div>
+                                
+                                <div class="menu-items-grid">
+                                    <!-- Sample menu items - these would be populated from database -->
+                                    <div class="menu-item-card" data-category="starters">
+                                        <div class="item-info">
+                                            <h6>Paneer Tikka</h6>
+                                            <p class="item-description">Grilled cottage cheese with spices</p>
+                                            <span class="item-price">₹250</span>
+                                        </div>
+                                        <div class="item-quantity">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity('paneer-tikka')">-</button>
+                                            <input type="number" id="paneer-tikka" name="items[paneer-tikka]" value="0" min="0" class="form-control quantity-input">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity('paneer-tikka')">+</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="menu-item-card" data-category="main-course">
+                                        <div class="item-info">
+                                            <h6>Butter Chicken</h6>
+                                            <p class="item-description">Creamy tomato-based curry</p>
+                                            <span class="item-price">₹450</span>
+                                        </div>
+                                        <div class="item-quantity">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity('butter-chicken')">-</button>
+                                            <input type="number" id="butter-chicken" name="items[butter-chicken]" value="0" min="0" class="form-control quantity-input">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity('butter-chicken')">+</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="menu-item-card" data-category="desserts">
+                                        <div class="item-info">
+                                            <h6>Gulab Jamun</h6>
+                                            <p class="item-description">Sweet milk dumplings in sugar syrup</p>
+                                            <span class="item-price">₹150</span>
+                                        </div>
+                                        <div class="item-quantity">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity('gulab-jamun')">-</button>
+                                            <input type="number" id="gulab-jamun" name="items[gulab-jamun]" value="0" min="0" class="form-control quantity-input">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity('gulab-jamun')">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Order Summary -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-receipt me-2"></i>Order Summary</h5>
+                            <div class="order-summary">
+                                <div class="summary-items" id="summary-items">
+                                    <!-- Order items will be displayed here -->
+                                </div>
+                                <div class="summary-total">
+                                    <h6>Total Amount: <span id="total-amount">₹0</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Special Instructions -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-comment me-2"></i>Special Instructions</h5>
+                            <div class="mb-3">
+                                <label for="special_instructions" class="form-label">Any special instructions or requests?</label>
+                                <textarea class="form-control" id="special_instructions" name="special_instructions" rows="3" placeholder="Enter any special instructions, dietary requirements, or specific requests..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Place Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Order Form Styles */
+.order-form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-header h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-header p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.form-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.form-section h5 {
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.form-section h5 i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.form-label {
+    color: var(--dark-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Menu Selection Styles */
+.menu-categories {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.menu-categories .btn {
+    border-radius: 25px;
+    margin: 0 0.25rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.menu-categories .btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.menu-items-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.menu-item-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.menu-item-card:hover {
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.item-info h6 {
+    color: var(--dark-color);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.item-description {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Order Summary Styles */
+.order-summary {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.summary-items {
+    margin-bottom: 1rem;
+}
+
+.summary-total {
+    border-top: 2px solid #dee2e6;
+    padding-top: 1rem;
+    text-align: right;
+}
+
+.summary-total h6 {
+    color: var(--dark-color);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 2rem;
+}
+
+.form-actions .btn {
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .order-form-card {
+        padding: 2rem;
+    }
+    
+    .menu-item-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .item-quantity {
+        justify-content: center;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Show/hide delivery section based on order type
+    $('#order_type').change(function() {
+        if ($(this).val() === 'delivery') {
+            $('#delivery-section').show();
+            $('#delivery_date, #delivery_time, #delivery_address').prop('required', true);
+        } else {
+            $('#delivery-section').hide();
+            $('#delivery_date, #delivery_time, #delivery_address').prop('required', false);
+        }
+    });
+    
+    // Menu category filtering
+    $('.menu-categories .btn').click(function() {
+        $('.menu-categories .btn').removeClass('active');
+        $(this).addClass('active');
+        
+        const category = $(this).data('category');
+        if (category === 'all') {
+            $('.menu-item-card').show();
+        } else {
+            $('.menu-item-card').hide();
+            $(`.menu-item-card[data-category="${category}"]`).show();
+        }
+    });
+    
+    // Update order summary when quantities change
+    $('.quantity-input').on('input', updateOrderSummary);
+    
+    // Set minimum delivery date to today
+    $('#delivery_date').attr('min', new Date().toISOString().split('T')[0]);
+});
+
+function increaseQuantity(itemId) {
+    const input = $(`#${itemId}`);
+    input.val(parseInt(input.val()) + 1);
+    updateOrderSummary();
+}
+
+function decreaseQuantity(itemId) {
+    const input = $(`#${itemId}`);
+    const currentValue = parseInt(input.val());
+    if (currentValue > 0) {
+        input.val(currentValue - 1);
+        updateOrderSummary();
+    }
+}
+
+function updateOrderSummary() {
+    let total = 0;
+    const summaryItems = [];
+    
+    // Sample prices - in real app, these would come from database
+    const prices = {
+        'paneer-tikka': 250,
+        'butter-chicken': 450,
+        'gulab-jamun': 150
+    };
+    
+    $('.quantity-input').each(function() {
+        const itemId = $(this).attr('id');
+        const quantity = parseInt($(this).val());
+        const price = prices[itemId] || 0;
+        const itemTotal = quantity * price;
+        
+        if (quantity > 0) {
+            total += itemTotal;
+            const itemName = $(this).closest('.menu-item-card').find('h6').text();
+            summaryItems.push(`${itemName} x ${quantity} = ₹${itemTotal}`);
+        }
+    });
+    
+    // Update summary display
+    $('#summary-items').html(summaryItems.map(item => `<div>${item}</div>`).join(''));
+    $('#total-amount').text(`₹${total}`);
+}
+
+// Form validation
+$('.order-form').submit(function(e) {
+    e.preventDefault();
+    
+    const total = parseInt($('#total-amount').text().replace('₹', ''));
+    if (total === 0) {
+        alert('Please select at least one item to order.');
+        return;
+    }
+    
+    // Show success message
+    showNotification('Order placed successfully!', 'success');
+    
+    // Submit form
+    this.submit();
+});
+
+function showNotification(message, type) {
+    const notification = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.alert('close');
+    }, 3000);
+}
+</script>
+{% endblock %}
